@@ -42,7 +42,6 @@ How this object evolves over time:
 
 const waitingOrder1 = 
 {
-    cartOrderID: 12 //Obtained from the database based on UserID
     userName: "Daria" //Obtained from the database based on UserID
     userPhone: "+5145855582" //Obtained from the database based on UserID
     items: {soup: {price: 13.00, quant: 1}, salad: {price: 10.00, quant: 2}}
