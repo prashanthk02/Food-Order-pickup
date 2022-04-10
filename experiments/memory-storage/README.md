@@ -49,8 +49,11 @@ const waitingOrder1 =
     //Above two properties obtained from the allUserCarts[currUserID] object when the user clicks "Send order"
 }
 
+//Waiting orders are stored in another object and referenced by ID
 allWaitingOrders = {orderID1: waitingOrder1, orderID2: waitingOrder1}
-}
+
+//We reference one waitingOrder object like
+allWaitingOrders[orderID1]
 
 ```
 
