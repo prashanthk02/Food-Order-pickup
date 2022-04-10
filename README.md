@@ -1,7 +1,7 @@
 ## Links to other notes
 
-* [API](.\experiments\twilio-api\README.md)
-* [Memory storage](".\experiments\memory-storage\README.md) - objects in memory, not database
+* [API](./experiments/twilio-api/README.md)
+* [Memory storage](./experiments/memory-storage/README.md) - objects in memory, not database
 
 ## Technology  Overview
 
