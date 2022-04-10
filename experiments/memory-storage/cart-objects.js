@@ -69,3 +69,6 @@ console.log("Change the Tilapia quantity from 3 to 1, the total price is: " + al
 
 allUserCarts[currUserID].addDish("Muffin", 2.00, 3);
 console.log("Add 3 muffins ($2 each), the total price is: " + allUserCarts[currUserID].getTotalPrice());
+
+allUserCarts[currUserID].removeDish("Tilapia");
+console.log("Take all Tilapia out of cart, the total price is: " + allUserCarts[currUserID].getTotalPrice());
