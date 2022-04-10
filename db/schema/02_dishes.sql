@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS dishes CASCADE;
+CREATE TABLE dishes (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  description VARCHAR(255),
+  price INTEGER NOT NULL,
+  image VARCHAR(255),
+  category VARCHAR(255) NOT NULL
+);
