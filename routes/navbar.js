@@ -14,7 +14,7 @@ module.exports = (db) => {
   });
 
   router.get("/orders", (req, res) => {
-   res.render("ordersTest");
+   res.render("orders");
   });
 
 

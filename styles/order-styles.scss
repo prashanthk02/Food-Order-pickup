@@ -1,0 +1,96 @@
+#outer-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  main {
+    background: white;
+    width: 100%; /*Should be less in desktop view*/
+    padding: 15px;
+  }
+}
+
+section#all-orders {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  gap: 20px;
+}
+
+article.order {
+  border: 1px solid blue;
+}
+
+div.order-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(237, 237, 237);
+
+  div.order-num{
+    color: rgb(146, 146, 146);
+    padding: 10px;
+    align: center;
+  }
+
+  div.order-status{
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 180px;
+
+  }
+
+  div.order-status.completed{
+    background-color: green;
+  }
+
+  div.order-status.awaiting{
+    background-color: rgb(203, 160, 30);
+  }
+
+  div.order-status.pending{
+    background-color: blue;
+  }
+}
+
+div.order-body{
+  padding: 10px;
+
+  div.order-date{
+    color: rgb(92, 92, 92);
+    padding-bottom: 10px;
+    font: italic;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li{
+      list-style-type: none;
+    }
+  }
+  
+  div.order-total{
+    padding: 10px 0px;
+    font-weight: bold;
+  }
+
+}
+
+
+@media only screen and (min-width: 768px) {
+  #outer-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+
+@media only screen and (min-width: 1024px) {
+  #outer-container {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
