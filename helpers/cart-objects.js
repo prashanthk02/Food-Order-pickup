@@ -3,10 +3,13 @@ class userCart {
 	constructor() {
     this.items = {}
   }
+
+  //Called from the CART page
   removeDish (dish) {
     delete this.items[dish];
   }
 
+  //Called from the CART page
   changeDishQuant(dish, newQuant) {
     this.items[dish].quant = newQuant;
   }
@@ -34,7 +37,7 @@ class userCart {
     }
     contents += `TOTAL PRICE: ${this.getTotalPrice()}\n`;
     console.log(contents);
-    return contents;  
+    return contents;
   }
 
 }
@@ -57,7 +60,7 @@ module.exports = makeCart;
 //An individual user cart looks like this, with properties and helper methods
 
 // const userCart = {
-//   items: {soup: {price: 13.00, quant: 1}, salad: {price: 10.00, quant: 2}}, 
+//   items: {soup: {price: 13.00, quant: 1}, salad: {price: 10.00, quant: 2}},
 //   addDish();
 //   removeDish();
 //   changeDishQuant();

@@ -29,11 +29,10 @@
 
         <% for (let key of Object.keys(orderInfo)) {%>
 
-
           <article class="order">
             <div class="order-header">
               <div class="order-num">#<%= key %></div>
-              <div class="order-status awaiting"><%= orderInfo[key].status %></div>
+              <div class="order-status <%= orderInfo[key].status %>"><%= orderInfo[key].status %></div>
             </div>
             <div class="order-body">
               <div class="order-date">

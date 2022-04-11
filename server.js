@@ -66,7 +66,6 @@ const widgetsRoutes = require("./routes/widgets---givenexample");
 const navbarRoutes = require("./routes/nav");
 const menuRoutes = require("./routes/menu");
 const cartRoutes = require("./routes/cart");
-const userRoutes = require("./routes/user");
 
 
 //-----THESE WERE EXAMPLES, DELETE LATER
@@ -82,8 +81,6 @@ app.use("/api/widgets", widgetsRoutes(db));
 
 app.use("/nav", navbarRoutes(db)); //---> Separate files for all routes that are for displaying the navbar links: menu, cart, order
 app.use("/api/menu", menuRoutes(db)); //---> API routes return JSONS with data from the database
-
-app.use("/api/user", userRoutes(db)); //---> For manipulating the cart objects in memory
 
 app.use("/cart", cartRoutes(db)); //---> For manipulating the cart objects in memory
 

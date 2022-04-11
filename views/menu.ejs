@@ -14,6 +14,7 @@
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/menu.js"></script>
 </head>
 
 <body>
@@ -21,37 +22,18 @@
   <%- include('partials/_nav') %>
   <!--Pager header with menu type (starters, mains, etc.)-->
   <header class="menu-types">
-    <span>All</span>
-    <span>Mains</span>
-    <span>Starters</span>
-    <span>Appetizers</span>
+    <button type="submit" class="category-btn" id="category-salad">Salads</button>
+    <button type="submit" class="category-btn" id="category-appetizer">Appetizers</button>
+    <button type="submit" class="category-btn" id="category-main">Mains</button>
+    <button type="submit" class="category-btn" id="category-side">Sides</button>
+    <button type="submit" class="category-btn" id="category-dessert">Desserts</button>
+    <button type="submit" class="category-btn" id="category-drink">Drinks</button>
   </header>
 
   <!--Main display for menu-->
   <main>
   <section class="menu-items">
-    <article>
-      <header class="food-item-name">Pasta Salad</header>
-      <span class="food-description">A yummy pasta salad with all the toppings.</span>
-      <span class="food-image"><img src="/docs/pastaSalad.jpeg"></span>
-      <footer class="food-price">
-        <span>$10</span>
-        <form action="/add/:item/:quant" METHOD="post">
-          <select name="quantity" id="quantity" label="Quantity:">
-            <option value="1"> 1 </option>
-            <option value="2"> 2 </option>
-            <option value="3"> 3 </option>
-            <option value="4"> 4 </option>
-            <option value="5"> 5 </option>
-            <option value="6"> 6 </option>
-            <option value="7"> 7 </option>
-            <option value="8"> 8 </option>
-            <option value="9"> 9 </option>
-          </select>
-          <button type="submit">Add to Cart</button>
-        </form>
-      </footer>
-    </article>
+
   </section>
   </main>
 </body>
