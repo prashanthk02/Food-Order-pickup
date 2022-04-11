@@ -9,7 +9,7 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="/styles/main.css" type="text/css" /> -->
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -18,10 +18,7 @@
   <style>
     body {
       display: flex;
-      flex-direction: row;
-
     }
-
   </style>
 
 </head>
@@ -33,21 +30,20 @@
     </header>
 
     <div>
-      Img<img src="">
-      Price:
-      <label>Qunatity:</label>
-      <input type="number" min="0" max="9">
-      Name:
+      <h4>Name</h4>
+      <div>
+        Img<img src="">
+        <label>Qunatity:</label>
+        <input type="number" min="0" max="9"> * Price
+      </div>
       Description:
       <button>Remove</button>
     </div>
 
-    <div>
-      Order Total:
-      <button>Place the order</button>
-    </div>
-
-
+    <footer>
+        Order Total:
+        <button>Place the order</button>
+    </footer>
   </main>
 </body>
 
