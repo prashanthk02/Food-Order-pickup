@@ -1,9 +1,3 @@
-/*
- * All routes for Widgets are defined here
- * Since this file is loaded in server.js into api/widgets,
- *   these routes are mounted onto /widgets
- * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
- */
 
 const express = require('express');
 const router  = express.Router();
@@ -12,15 +6,15 @@ const router  = express.Router();
 module.exports = (db) => {
 
   router.get("/menu", (req, res) => {
-   res.render("menu");
+   res.render("menuTest");
   });
 
   router.get("/cart", (req, res) => {
-   res.render("cart");
+   res.render("cartTest");
   });
 
   router.get("/orders", (req, res) => {
-   res.render("orders");
+   res.render("ordersTest");
   });
 
 

@@ -59,16 +59,16 @@ global.allCarts[global.currUserID].print();
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
+const usersRoutes = require("./routes/users---givenexample");
+const widgetsRoutes = require("./routes/widgets---givenexample");
 
 //Our actual routes
 const navbarRoutes = require("./routes/navbar");
-// const menuRoutes = require("./routes/menu");
-// const cartRoutes = require("./routes/cart");
+const menuRoutes = require("./routes/menu");
+const cartRoutes = require("./routes/cart");
 
 
-//-----THESE WERE EXAMPLES
+//-----THESE WERE EXAMPLES, DELETE LATER
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -80,14 +80,17 @@ app.use("/api/widgets", widgetsRoutes(db));
 //-------OUR ACTUAL ROUTES
 
 app.use("/navbar", navbarRoutes(db)); //---> Separate files for all routes that are for displaying the navbar links: menu, cart, order
-// app.use("api/menu", menuRoutes(db)); //---> API routes return JSONS with data from the database
-// app.use("/cart", cartRoutes(db)); //---> For manipulating the cart objects in memory
+app.use("/api/menu", menuRoutes(db)); //---> API routes return JSONS with data from the database
+app.use("/cart", cartRoutes(db)); //---> For manipulating the cart objects in memory
 
 
-//The homepage redirects to the menu
+//HOMEPAGE AS A TEST
 app.get("/", (req, res) => {
-  console.log(global.Tools.Test)
-  res.redirect("/navbar/menu");
+  res.send("<h1>The index shows cart contents to test them for now.</h1>\n" 
+  + global.allCarts[currUserID].print()
+  + `<br><br><a href="/navbar/menu">Menu</a> <br>
+  <a href="/navbar/orders">Orders</a> <br>
+  <a href="/navbar/cart">Cart</a> <br>`);
 })
 
 
