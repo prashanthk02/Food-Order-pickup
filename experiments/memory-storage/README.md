@@ -17,6 +17,7 @@ const userCart1 = {
   removeDish();
   changeDishQuant();
   getTotalPrice();
+  print();
 
 }
 

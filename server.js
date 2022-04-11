@@ -1,3 +1,7 @@
+//Helper imports
+const makeCart = require("./helpers/cart-objects");
+
+
 // load .env data into process.env
 require("dotenv").config();
 
@@ -33,16 +37,62 @@ app.use(
 
 app.use(express.static("public"));
 
+
+//------------GLOBAL VARIABLES (can be accessed from different files e.g. global.currUserID)
+
+global.currUserID = 1; //<------------This is manually set to 1 (Alice in the database) for now
+global.allCarts = {} //Keys are userIDs (e.g. 1), values are userCart objects
+makeCart(global.currUserID) //<-------See ./helpers/cart-objects.js. This creates a new cart in the global.allCarts object if there wasn't one already for the current user
+
+//A TEST FOR HOW THE CART WORKS (remove later)
+
+console.log("----Initial cart----")
+global.allCarts[global.currUserID].print();
+
+console.log("----Try adding something----")
+global.allCarts[global.currUserID].addDish("Tuna sandich", 10.00, 2);
+global.allCarts[global.currUserID].addDish("Blueberry muffin", 3.00, 1);
+global.allCarts[global.currUserID].print();
+
+
+//--------------------------------------------
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+
+//Our actual routes
+const navbarRoutes = require("./routes/navbar");
+// const menuRoutes = require("./routes/menu");
+// const cartRoutes = require("./routes/cart");
+
+
+//-----THESE WERE EXAMPLES
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
+
+
+//-------OUR ACTUAL ROUTES
+
+app.use("/navbar", navbarRoutes(db)); //---> Separate files for all routes that are for displaying the navbar links: menu, cart, order
+// app.use("api/menu", menuRoutes(db)); //---> API routes return JSONS with data from the database
+// app.use("/cart", cartRoutes(db)); //---> For manipulating the cart objects in memory
+
+
+//The homepage redirects to the menu
+app.get("/", (req, res) => {
+  console.log(global.Tools.Test)
+  res.redirect("/navbar/menu");
+})
+
+
+//--------------------------------------------
+
 
 // Home page
 // Warning: avoid creating more routes in this file!
