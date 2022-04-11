@@ -26,59 +26,28 @@
   <div id="outer-container">
 
     <main>
-      <section id="all-orders">
-        <article class="order">
-          <div class="order-header">
-            <div class="order-num">#13</div>
-            <div class="order-status completed">Completed</div>
-          </div>
-          <div class="order-body">
-            <div class="order-date">
-              Date: 2022-03-28
+
+        <% for (let key of Object.keys(orderInfo)) {%>
+
+
+          <article class="order">
+            <div class="order-header">
+              <div class="order-num">#<%= key %></div>
+              <div class="order-status awaiting"><%= orderInfo[key].status %></div>
             </div>
-            <ul>
-              <li>Tilapia x 2</li>
-              <li>Ceasar salad x 1</li>
-            </ul>
-            <div class="order-total">TOTAL: $16.50</div>
-          </div>
-        </article>
-
-        <article class="order">
-          <div class="order-header">
-            <div class="order-num">#13</div>
-            <div class="order-status awaiting">Awaiting confirmation</div>
-          </div>
-          <div class="order-body">
-            <div class="order-date">
-              Date: 2022-03-28
+            <div class="order-body">
+              <div class="order-date">
+                <%= orderInfo[key].time %>
+              </div>
+              <ul>
+                <% for (let dish of orderInfo[key].dishes) {%>
+                  <li><%= dish.name %> x <%= dish.quantity %></li>
+                <% } %>
+              </ul>
+              <div class="order-total">$<%= orderInfo[key].totalPrice %>.00</div>
             </div>
-            <ul>
-              <li>Tilapia x 2</li>
-              <li>Ceasar salad x 1</li>
-            </ul>
-            <div class="order-total">TOTAL: $16.50</div>
-          </div>
-        </article>
-
-        <article class="order">
-          <div class="order-header">
-            <div class="order-num">#13</div>
-            <div class="order-status pending">Pending</div>
-          </div>
-          <div class="order-body">
-            <div class="order-date">
-              Date: 2022-03-28
-            </div>
-            <ul>
-              <li>Tilapia x 2</li>
-              <li>Ceasar salad x 1</li>
-            </ul>
-            <div class="order-total">TOTAL: $16.50</div>
-          </div>
-        </article>
-
-
+          </article>
+        <% } %>
 
       </section>
     </main>

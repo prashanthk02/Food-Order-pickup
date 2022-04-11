@@ -96,10 +96,6 @@ LIST OF ROUTES
 
 /api/menu -for displaying theitems of the menu page
 
-/api/user - redirect to looking for routes in a file, all the routes related to a user
-GET /api/user/:userID/orders  -displaying order history of a user
-
-
 //CART ROUTES -- redirection of /cart is in a file cart.js
 //These manipulate theobject --- global.allCarts[global.currUserID]
 POST -- /cart/user/:userID/add
