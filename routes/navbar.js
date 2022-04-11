@@ -6,7 +6,7 @@ const router  = express.Router();
 module.exports = (db) => {
 
   router.get("/menu", (req, res) => {
-   res.render("menuTest");
+   res.render("menu");
   });
 
   router.get("/cart", (req, res) => {
@@ -14,7 +14,7 @@ module.exports = (db) => {
   });
 
   router.get("/orders", (req, res) => {
-   res.render("ordersTest");
+   res.render("orders");
   });
 
 
