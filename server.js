@@ -102,7 +102,7 @@ app.use("/cart", cartRoutes(db)); //---> For manipulating the cart objects in me
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.redirect("navbar/menu");
 });
 
 app.listen(PORT, () => {
