@@ -85,13 +85,13 @@ app.use("/cart", cartRoutes(db)); //---> For manipulating the cart objects in me
 
 
 //HOMEPAGE AS A TEST
-app.get("/", (req, res) => {
-  res.send("<h1>The index shows cart contents to test them for now.</h1>\n" 
-  + global.allCarts[currUserID].print()
-  + `<br><br><a href="/navbar/menu">Menu</a> <br>
-  <a href="/navbar/orders">Orders</a> <br>
-  <a href="/navbar/cart">Cart</a> <br>`);
-})
+// app.get("/", (req, res) => {
+//   res.send("<h1>The index shows cart contents to test them for now.</h1>\n"
+//   + global.allCarts[currUserID].print()
+//   + `<br><br><a href="/navbar/menu">Menu</a> <br>
+//   <a href="/navbar/orders">Orders</a> <br>
+//   <a href="/navbar/cart">Cart</a> <br>`);
+// })
 
 
 //--------------------------------------------
