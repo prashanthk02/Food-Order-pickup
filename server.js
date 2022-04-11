@@ -63,9 +63,10 @@ const usersRoutes = require("./routes/users---givenexample");
 const widgetsRoutes = require("./routes/widgets---givenexample");
 
 //Our actual routes
-const navbarRoutes = require("./routes/navbar");
+const navbarRoutes = require("./routes/nav");
 const menuRoutes = require("./routes/menu");
 const cartRoutes = require("./routes/cart");
+const userRoutes = require("./routes/user");
 
 
 //-----THESE WERE EXAMPLES, DELETE LATER
@@ -79,9 +80,40 @@ app.use("/api/widgets", widgetsRoutes(db));
 
 //-------OUR ACTUAL ROUTES
 
-app.use("/navbar", navbarRoutes(db)); //---> Separate files for all routes that are for displaying the navbar links: menu, cart, order
+app.use("/nav", navbarRoutes(db)); //---> Separate files for all routes that are for displaying the navbar links: menu, cart, order
 app.use("/api/menu", menuRoutes(db)); //---> API routes return JSONS with data from the database
+
+app.use("/api/user", userRoutes(db)); //---> For manipulating the cart objects in memory
+
 app.use("/cart", cartRoutes(db)); //---> For manipulating the cart objects in memory
+
+
+/*
+
+LIST OF ROUTES
+
+/navbar - for displaying menu, orders, art
+
+/api/menu -for displaying theitems of the menu page
+
+/api/user - redirect to looking for routes in a file, all the routes related to a user
+GET /api/user/:userID/orders  -displaying order history of a user
+
+
+//CART ROUTES -- redirection of /cart is in a file cart.js
+//These manipulate theobject --- global.allCarts[global.currUserID]
+POST -- /cart/user/:userID/add
+POST -- /cart/user/:userID/change
+DELETE -- /cart/user/:userID/remove
+POST -- /cart/user/:userID/submit
+GET -- /cart/user/:userID/viewCart
+
+//TWILIO
+POST /twilio/sms -->
+*/
+
+
+
 
 
 //HOMEPAGE AS A TEST
@@ -104,6 +136,8 @@ app.use("/cart", cartRoutes(db)); //---> For manipulating the cart objects in me
 app.get("/", (req, res) => {
   res.redirect("navbar/menu");
 });
+
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

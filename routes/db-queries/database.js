@@ -55,15 +55,14 @@ const orderStatus = ((order) => {
 })
 
 //Previous orders with total price
-const customerOrders = (() => {
-  let queryString = `
-  SELECT order_id, order_time, order_status, SUM(order_details.quantity * dishes.price) as Amount
+const ordersByCustomer = (() => {
+  let queryString =`
+  SELECT order_id, order_status, order_time, dishes.name, order_details.quantity, dishes.price
   FROM orders
-  JOIN order_details ON orders.id = order_id
+  JOIN order_details ON orders.id = order_details.order_id
   JOIN dishes ON dishes.id = dish_id
-  WHERE orders.id = $1
-  GROUP BY order_id;
-  `
+  WHERE orders.user_id = $1;`
+  return queryString;
 })
 
 //Add user to users
@@ -75,4 +74,4 @@ const newUser = ((name, phone) => {
 
 //-------EXPORT--------
 
-module.exports = {itemByCategory};
+module.exports = {itemByCategory, ordersByCustomer};
