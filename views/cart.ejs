@@ -14,6 +14,7 @@
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/cart.js"></script>
 
   <style>
     body {
@@ -24,22 +25,24 @@
 </head>
 
 <body>
+  <%- include('partials/_nav') %>
   <main>
     <header>
       <h3>Cart</h3>
     </header>
-
-    <div>
+<section id="cart-items">
+    <!-- <article>
       <h4>Name</h4>
       <div>
         Img<img src="">
-        <label>Qunatity:</label>
+        <label>Quantity:</label>
         <input type="number" min="1" max="9"> * Price
+        <button type="submit">Update Quantity</button>
       </div>
-      Description:
-      <button>Remove</button>
-    </div>
-
+      <span>Description</span>
+      <button>Remove from Cart</button>
+    </article> -->
+</section>
     <footer>
         Order Total:
         <button>Place the order</button>

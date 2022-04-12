@@ -11,7 +11,7 @@ module.exports = (db) => {
   });
 
   router.get("/cart", (req, res) => {
-   res.render("cartTest");
+   res.render("cart");
   });
 
   router.get("/orders", (req, res) => {
