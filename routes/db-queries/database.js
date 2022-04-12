@@ -74,7 +74,8 @@ const ordersByCustomer = (() => {
   FROM orders
   JOIN order_details ON orders.id = order_details.order_id
   JOIN dishes ON dishes.id = dish_id
-  WHERE orders.user_id = $1;`
+  WHERE orders.user_id = $1
+  ORDER BY order_time DESC;`
   return queryString;
 })
 

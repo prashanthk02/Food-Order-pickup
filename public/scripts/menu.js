@@ -8,7 +8,7 @@ const createMenuItem = function(menuItem) {
   <article>
   <header class="food-item-name">${menuItem.name}</header>
   <span class="food-description">${menuItem.description}</span>
-  <span class="food-image"><img src=${menuItem.image}></span>
+  <span><img src=${menuItem.image} class="menu-image"></span>
   <footer class="food-price">
     <span>${menuItem.price}</span>
     <form action="/cart/add/${menuItem.id}/" METHOD="POST">
