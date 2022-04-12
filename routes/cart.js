@@ -27,10 +27,9 @@ module.exports = (db) => {
     db.query(queryString)
       .then(data => {
         const rawJSON = data.rows;
-        // for (let index in rawJSON){
-        //   ///// ----> TO FIX
-        //   rawJSON[index].quant = global.allCarts[global.currUserID].items[rawJSON[index]]?.quant;
-        // }
+        for (let elem of rawJSON){
+          elem.quant = global.allCarts[global.currUserID].items[elem.id].quant;
+        }
         res.json(rawJSON);
       })
   })
