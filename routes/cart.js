@@ -53,11 +53,33 @@ module.exports = (db) => {
     //res.JSON for total price
   });
 
+  const orderDetailInsert = function (order_id, dish_id, user_id, quantity) {
+    db.query(
+    `INSERT INTO order_details (order_id, dish_id, user_id, quantity)
+    VALUES (${order_id}, ${dish_id}, ${user_id}, ${quantity})`
+    )
+    .then(() => {
+      console.log("Success!");
+    })
+  }
+
   router.post("/submitOrder", (req, res) => {
-    //Should this be a route? Should this be a function? Unsure.
-    //A lot of things need to happen when the order is submitted.
+    db.query(`
+    INSERT INTO orders (order_time, order_status, user_id)
+    VALUES (now(),'pending', ${global.currUserID})
+    RETURNING id`)
+    .then(data => {
+      const orderID = data.rows[0].id;
+      for(let dishID of Object.keys(global.allCarts[global.currUserID].items)) {
+        const quant = global.allCarts[global.currUserID].items[dishID].quant;
+        orderDetailInsert(orderID, dishID, global.currUserID, quant);
+      }
+      res.redirect("/nav/menu");
+    })
+    .catch(error => console.log(error.message));
   });
 
 
   return router;
 };
+
