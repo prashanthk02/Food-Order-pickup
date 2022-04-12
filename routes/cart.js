@@ -28,6 +28,7 @@ module.exports = (db) => {
     db.query(queryString)
       .then(data => {
         const rawJSON = data.rows;
+        console.log(rawJSON);
         for (let elem of rawJSON){
           elem.quant = global.allCarts[global.currUserID].items[elem.id].quant;
         }
@@ -46,11 +47,8 @@ module.exports = (db) => {
     const item = req.params.item;
     console.log(item);
     global.allCarts[global.currUserID].removeDish(item);
+    // res.end();
     res.redirect('/nav/cart');
-  });
-
-  router.get("/totalPrice", (req, res) => {
-    //res.JSON for total price
   });
 
   const orderDetailInsert = function (order_id, dish_id, user_id, quantity) {
@@ -66,7 +64,7 @@ module.exports = (db) => {
   router.post("/submitOrder", (req, res) => {
     db.query(`
     INSERT INTO orders (order_time, order_status, user_id)
-    VALUES (now(),'pending', ${global.currUserID})
+    VALUES (now(),'Awaiting Confirmation', ${global.currUserID})
     RETURNING id`)
     .then(data => {
       const orderID = data.rows[0].id;

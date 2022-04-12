@@ -38,7 +38,7 @@ div.order-header{
     background-color: rgb(203, 160, 30);
   }
 
-  div.order-status.pending{
+  div.order-status.confirmed{
     background-color: blue;
   }
 }
@@ -60,7 +60,7 @@ div.order-body{
       list-style-type: none;
     }
   }
-  
+
   div.order-total{
     padding: 10px 0px;
     font-weight: bold;
