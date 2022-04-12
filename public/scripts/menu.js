@@ -38,6 +38,7 @@ const renderCategory = function (category) {
 
 const categoryClick = (category) => {
   $(`#category-${category}`).click((event) => {
+    event.preventDefault();
     $('.menu-items').empty();
     renderCategory(category);
   })

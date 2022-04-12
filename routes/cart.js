@@ -11,6 +11,7 @@ module.exports = (db) => {
     const itemID = req.params.item;
     const quant = Number(req.body.quant);
     global.allCarts[global.currUserID].addDish(itemID, quant);
+    res.redirect('/nav/menu');
   });
 
   router.get("/contents", (req, res) => {
@@ -34,12 +35,18 @@ module.exports = (db) => {
       })
   })
 
-  router.post("/change/:item/:newQuant", (req, res) => {
-    //Just modify the global object
+  router.post("/change/:item", (req, res) => {
+    const newQuant = req.body.newQuant
+    const dishID = req.params.item
+    global.allCarts[global.currUserID].changeDishQuant(dishID, newQuant);
+    res.redirect('/nav/cart');
   });
 
-  router.post("/remove/:item/", (req, res) => {
-    //Just modify the global object
+  router.post("/remove/:item", (req, res) => {
+    const item = req.params.item;
+    console.log(item);
+    global.allCarts[global.currUserID].removeDish(item);
+    res.redirect('/nav/cart');
   });
 
   router.get("/totalPrice", (req, res) => {
