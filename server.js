@@ -127,7 +127,7 @@ POST /twilio/sms -->
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.redirect("navbar/menu");
+  res.redirect("nav/menu");
 });
 
 
