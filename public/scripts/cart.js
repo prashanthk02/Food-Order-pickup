@@ -5,9 +5,9 @@ const createCartItem = function(item) {
   <h4>${item.name}</h4>
   <div>
     <img src="${item.image}" class="cart-image">
-    <label>Quantity: ${item.quant}</label>
     <form class="cart-update" action="/cart/change/${item.id}" method="POST">
-      <input type="number" name="newQuant" min="1" max="9"> * $${item.price}
+      <label>Quantity: </label>
+      <input type="number" name="newQuant" min="1" max="9" value="${item.quant}"> * $${item.price}
       <button type="submit">Update Quantity</button>
     </form>
   </div>
