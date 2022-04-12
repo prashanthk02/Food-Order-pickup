@@ -24,7 +24,7 @@ module.exports = (db) => {
   });
 
   router.post("/submitOrder", (req, res) => {
-    //Should this be a route? Should this be a function? Unsure. 
+    //Should this be a route? Should this be a function? Unsure.
     //A lot of things need to happen when the order is submitted.
   });
 
