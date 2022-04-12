@@ -13,15 +13,12 @@ const createCartItem = function(item) {
   </div>
   <span>${item.description}</span>
   <form class="remove-from-cart" action="/cart/remove/${item.id}" method="POST">
-  <button type="submit">Remove from Cart</button>
+    <button type="submit" class="remove-button">Remove from Cart</button>
   </form>
+
 </article>`);
 return $cartItem;
 }
-
-$(document).ready(function() {
-  renderCart();
-});
 
 const renderCart = function () {
 
@@ -34,6 +31,60 @@ const renderCart = function () {
         }
       }
 
+  })
+}
+
+const displayTotalPrice= () => {
+
+  $.ajax(`/cart/contents`, { method: 'GET' })
+  .then((cartItems) => {
+    let totalCost = 0;
+    if (cartItems) {
+      for (let item of cartItems) {
+        totalCost += item.price * item.quant
+      }
+      $("#order-total").text(totalCost);
+    } else {
+      $('#outer-container > main').empty();
+      $('#outer-container > main').append('<h1>Your cart is empty.</h1>')
+    }
+
   });
 
+
+}
+
+
+
+$(document).ready(function() {
+  renderCart();
+  displayTotalPrice();
+});
+
+
+//<span style="display:none" class="cart-item-id">${item.id}</span>
+
+
+
+//-------------NOT WORKING
+
+const addRemoveListener = function () {
+
+  $('.remove-button').click(function (event) {
+
+    event.preventDefault()
+
+    const itemID = $(this).siblings("span.cart-item-id").text();
+    $.ajax(`/cart/remove/${itemID}`, { method: 'POST' })
+    .then(() => {
+      console.log("Success");
+      $(this).closest("article").empty();
+      displayTotalPrice();
+    })
+
+    // $.ajax(`/cart/remove/${itemID}`)
+    //   console.log("HERE!");
+    //   // console.log(this.closest("article"));
+    //   // this.closest("article").empty();
+  })
 }

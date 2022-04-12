@@ -31,7 +31,7 @@ const getDishDetails = (listOfIDs) => {
 //Insert into orders
 const orderPlaced = ((order) => {
   const queryParams = [
-    order.order_time,
+    order.now(),
     order.order_status,
     order.user_id
   ];
