@@ -11,8 +11,8 @@ const createMenuItem = function(menuItem) {
   <span class="food-image"><img src=${menuItem.image}></span>
   <footer class="food-price">
     <span>${menuItem.price}</span>
-    <form action="/add/:itemID/:quant" METHOD="post">
-      <input type="number" min="1" max="9">
+    <form action="/cart/add/${menuItem.id}/" METHOD="POST">
+      <input type="number" name="quant" min="1" max="9">
       </select>
       <button type="submit">Add to Cart</button>
     </form>

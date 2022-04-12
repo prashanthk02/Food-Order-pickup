@@ -46,13 +46,13 @@ makeCart(global.currUserID) //<-------See ./helpers/cart-objects.js. This create
 
 //A TEST FOR HOW THE CART WORKS (remove later)
 
-console.log("----Initial cart----")
-global.allCarts[global.currUserID].print();
+// console.log("----Initial cart----")
+// global.allCarts[global.currUserID].print();
 
-console.log("----Try adding something----")
-global.allCarts[global.currUserID].addDish("Tuna sandich", 10.00, 2);
-global.allCarts[global.currUserID].addDish("Blueberry muffin", 3.00, 1);
-global.allCarts[global.currUserID].print();
+// console.log("----Try adding something----")
+// global.allCarts[global.currUserID].addDish("Tuna sandich", 2);
+// global.allCarts[global.currUserID].addDish("Blueberry muffin", 3.00, 1);
+// global.allCarts[global.currUserID].print();
 
 
 //--------------------------------------------

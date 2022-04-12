@@ -15,6 +15,19 @@ return queryString;
 
 })
 
+// Get dish details for cart
+
+const getDishDetails = (listOfIDs) => {
+  let queryString = `
+  SELECT * FROM dishes WHERE `;
+  for (let id of listOfIDs) {
+    queryString += `id = ${id} OR `
+  }
+  queryString = queryString.slice(0, -4);
+  queryString += ";"
+  return queryString;
+}
+
 //Insert into orders
 const orderPlaced = ((order) => {
   const queryParams = [
@@ -74,4 +87,4 @@ const newUser = ((name, phone) => {
 
 //-------EXPORT--------
 
-module.exports = {itemByCategory, ordersByCustomer};
+module.exports = {itemByCategory, ordersByCustomer, getDishDetails};
