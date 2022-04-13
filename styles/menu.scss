@@ -1,6 +1,6 @@
 img.menu-image {
-  height: 320px;
-  width: 400px;
+  height: 200px;
+  width: 280px;
   border-radius: 5px;
   display: block;
   margin: 10px auto 10px auto;
@@ -8,13 +8,14 @@ img.menu-image {
 
 .menu-types {
   background-color: rgb(176, 160, 15);
+  white-space: nowrap;
+  overflow: scroll hidden;
 }
 .category-btn {
   height: 40px;
   border: 2px solid rgb(176, 160, 15);
   border-radius: 8px;
   width: 100px;
-  transition: box-shadow .3s;
 }
 
 .category-btn:hover, .category-btn:focus {
@@ -23,9 +24,17 @@ img.menu-image {
 }
 .menu-box {
   margin: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  padding: 5px;
+  //display: flex;
+  //flex-direction: row;
+  //justify-content: flex-start;
+}
+
+.menu-items {
+  display: grid;
+  grid-template-rows: auto;
+  width: 100%;
+  grid-template-columns: repeat(1, 1fr);
 }
 
 .food-item-name {
@@ -46,8 +55,8 @@ img.menu-image {
 
 @media only screen and (min-width: 768px) {
   img.menu-image {
-    height: 320px;
-    width: 400px;
+    height: 300px;
+    width: 420px;
   }
 
   .category-btn {
@@ -59,10 +68,10 @@ img.menu-image {
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1024px) {
   img.menu-image {
-    height: 320px;
-    width: 400px;
+    height: 300px;
+    width: 420px;
   }
 
   .category-btn {
@@ -71,5 +80,17 @@ img.menu-image {
 
   .food-item-name {
     font-size: 24px;
+  }
+
+  .menu-box:hover {
+    border: 1px solid rgb(15, 15, 14);
+    box-shadow: 6px 6px 3px gray;
+
+  }
+
+  .menu-items {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(2, 1fr);
   }
 }

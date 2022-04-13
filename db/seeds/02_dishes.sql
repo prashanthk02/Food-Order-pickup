@@ -21,7 +21,7 @@ INSERT INTO dishes (name, description, price, image, category) VALUES ('Fries', 
 INSERT INTO dishes (name, description, price, image, category) VALUES ('Blueberry Pie', '', 9, 'https://github.com/dariakiseleva/midterm-project/blob/master/docs/blueberry.jpeg?raw=true', 'dessert');
 INSERT INTO dishes (name, description, price, image, category) VALUES ('Chocolate Mousse', '', 9, 'https://github.com/dariakiseleva/midterm-project/blob/master/docs/mousse.jpg?raw=true', 'dessert');
 INSERT INTO dishes (name, description, price, image, category) VALUES ('Lemon Cheese Cake', '', 9, 'https://github.com/dariakiseleva/midterm-project/blob/master/docs/lemon.jpeg?raw=true', 'dessert');
-INSERT INTO dishes (name, description, price, image, category) VALUES ('Banana Foster', '', 9, 'https://github.com/dariakiseleva/midterm-project/blob/master/docs/banana-foster.png?raw=true', 'dessert');
+INSERT INTO dishes (name, description, price, image, category) VALUES ('Banana Foster', '', 9, 'https://github.com/dariakiseleva/midterm-project/blob/master/docs/banana-foster.jpeg?raw=true', 'dessert');
 
 INSERT INTO dishes (name, description, price, image, category) VALUES ('Wine', '', 12, 'https://github.com/dariakiseleva/midterm-project/blob/master/docs/wine.jpeg?raw=true', 'drink');
 INSERT INTO dishes (name, description, price, image, category) VALUES ('Cocktails', '', 11, 'https://github.com/dariakiseleva/midterm-project/blob/master/docs/cocktails.jpeg?raw=true', 'drink');
