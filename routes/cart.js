@@ -1,11 +1,11 @@
+//Import helper functions
+const {newOrderSMS} = require('./../helpers/twilio.js');
+
 const express = require('express');
 const {getDishDetails} =require('./db-queries/database.js');
 const router  = express.Router();
 
-module.exports = (db) => {
-
-  //BRAINSTORMING ROUTES, NOT FINAL
-  //These can be called from HTML forms in EJS, or by $.get etc. in jQuery
+module.exports = (db, twilioClient) => {
 
   router.post("/add/:item/", (req, res) => {
     const itemID = req.params.item;
@@ -51,6 +51,7 @@ module.exports = (db) => {
     res.redirect('/nav/cart');
   });
 
+  //Helper function to insert order details when an order is placed
   const orderDetailInsert = function (order_id, dish_id, user_id, quantity) {
     db.query(
     `INSERT INTO order_details (order_id, dish_id, user_id, quantity)
@@ -61,6 +62,7 @@ module.exports = (db) => {
     })
   }
 
+  //Clicking submit order should submit the order in cart to the database and trigger next steps
   router.post("/submitOrder", (req, res) => {
     db.query(`
     INSERT INTO orders (order_time, order_status, user_id)
@@ -68,10 +70,20 @@ module.exports = (db) => {
     RETURNING id`)
     .then(data => {
       const orderID = data.rows[0].id;
+
+      //Log order details into the database
       for(let dishID of Object.keys(global.allCarts[global.currUserID].items)) {
         const quant = global.allCarts[global.currUserID].items[dishID].quant;
         orderDetailInsert(orderID, dishID, global.currUserID, quant);
       }
+      //Step 1: Send anything to the restaurant
+      newOrderSMS(twilioClient);
+
+
+      //Add items to the waiting orders object
+      //Send the correct information to the admin
+
+
       res.redirect("/nav/menu");
     })
     .catch(error => console.log(error.message));

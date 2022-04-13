@@ -1,7 +1,6 @@
 //Helper imports
 const makeCart = require("./helpers/cart-objects");
 
-
 // load .env data into process.env
 require("dotenv").config();
 
@@ -17,6 +16,11 @@ const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
+
+//Twilio authentication setup
+const accountSid = process.env.TWILIO_ACCOUNT_SID; 
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const twilioClient = require('twilio')(accountSid, authToken);
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -72,7 +76,7 @@ const twilioRoutes = require("./routes/twilio");
 app.use("/nav", navbarRoutes(db)); //---> Separate files for all routes that are for displaying the navbar links: menu, cart, order
 app.use("/api/menu", menuRoutes(db)); //---> API routes return JSONS with data from the database
 
-app.use("/cart", cartRoutes(db)); //---> For manipulating the cart objects in memory
+app.use("/cart", cartRoutes(db, twilioClient)); //---> For manipulating the cart objects in memory
 app.use("/twilio", twilioRoutes(db)); //---> for Twilio
 
 
@@ -97,33 +101,17 @@ POST /twilio/sms -->
 */
 
 
-
-
-
-//HOMEPAGE AS A TEST
-// app.get("/", (req, res) => {
-//   res.send("<h1>The index shows cart contents to test them for now.</h1>\n"
-//   + global.allCarts[currUserID].print()
-//   + `<br><br><a href="/navbar/menu">Menu</a> <br>
-//   <a href="/navbar/orders">Orders</a> <br>
-//   <a href="/navbar/cart">Cart</a> <br>`);
-// })
-
-
-//--------------------------------------------
-
-
-// Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
-
 app.get("/", (req, res) => {
   res.redirect("nav/menu");
 });
-
 
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
 
+
+//----------------TEST SPACE
+
+// const {smsClientConfirmed} = require('./helpers/twilio')
+// smsClientConfirmed(twilioClient);
