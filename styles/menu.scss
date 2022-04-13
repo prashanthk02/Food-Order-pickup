@@ -1,6 +1,75 @@
 img.menu-image {
-  height:auto;
-  width:auto;
-  max-width:700px;
-  max-height:200px;
+  height: 320px;
+  width: 400px;
+  border-radius: 5px;
+  display: block;
+  margin: 10px auto 10px auto;
+}
+
+.menu-types {
+  background-color: rgb(176, 160, 15);
+}
+.category-btn {
+  height: 40px;
+  border: 2px solid rgb(176, 160, 15);
+  border-radius: 8px;
+  width: 100px;
+  transition: box-shadow .3s;
+}
+
+.category-btn:hover, .category-btn:focus {
+  box-shadow: 0 0 8px rgb(255, 255, 255);
+  color: rgb(226, 141, 22);
+}
+.menu-box {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.food-item-name {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.food-description {
+  padding: 5px;
+  font-style: italic;
+}
+
+.food-price {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+@media only screen and (min-width: 768px) {
+  img.menu-image {
+    height: 320px;
+    width: 400px;
+  }
+
+  .category-btn {
+    margin: 5px;
+  }
+
+  .food-item-name {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  img.menu-image {
+    height: 320px;
+    width: 400px;
+  }
+
+  .category-btn {
+    margin: 5px;
+  }
+
+  .food-item-name {
+    font-size: 24px;
+  }
 }

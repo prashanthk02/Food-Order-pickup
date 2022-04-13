@@ -5,12 +5,18 @@ const createMenuItem = function(menuItem) {
   ///itemID should extract ${menuItem.id}
 
   const $menuItem = $(`
-  <article>
-  <header class="food-item-name">${menuItem.name}</header>
-  <span class="food-description">${menuItem.description}</span>
-  <span><img src=${menuItem.image} class="menu-image"></span>
+  <article class="menu-box">
+  <div class="name-des">
+    <header class="food-item-name">${menuItem.name}</header>
+    <span class="food-description">${menuItem.description}</span>
+  <div>
+
+  <div>
+    <span><img src=${menuItem.image} class="menu-image"></span>
+  </div>
+
   <footer class="food-price">
-    <span>${menuItem.price}</span>
+    <span>$${menuItem.price}</span>
     <form action="/cart/add/${menuItem.id}/" METHOD="POST">
       <input type="number" name="quant" min="1" max="9">
       </select>
