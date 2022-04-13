@@ -2,7 +2,7 @@
 require('dotenv').config({path:__dirname+'/./../.env'});
 const restaurantPhone = process.env.RESTAURANT_PHONE; 
 const twilioPhone = process.env.TWILIO_API_PHONE; 
-const clientPhone = '+15145855582'
+const clientPhone = '5145855582'
 
 
 const smsClientConfirmed = (twilioClient) => {
@@ -17,8 +17,10 @@ const smsClientConfirmed = (twilioClient) => {
   .catch((err) => console.log(err));
 }
 
-const newOrderSMS = (twilioClient) => {
-  const messageText = "New order!";
+const newOrderSMS = (twilioClient, newWaitingOrder) => {
+  const messageText = newWaitingOrder.newOrderMessage();
+  console.log(messageText);
+
   twilioClient.messages
   .create({
     body: messageText,
@@ -27,10 +29,12 @@ const newOrderSMS = (twilioClient) => {
   })
   .then(message => console.log(message.sid))
   .catch((err) => console.log(err));
+  
 }
 
 
 // console.log(accountSid + "\n" + authToken)
 // smsClientConfirmed();
+
 
 module.exports = {smsClientConfirmed, newOrderSMS};

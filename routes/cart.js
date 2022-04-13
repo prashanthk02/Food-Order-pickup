@@ -1,6 +1,8 @@
 //Import helper functions
-const {newOrderSMS} = require('./../helpers/twilio.js');
+const {addWaitingOrderAndNotifyRestaurant} = require('./../helpers/waiting-objects.js');
 
+
+//Set up the router
 const express = require('express');
 const {getDishDetails} =require('./db-queries/database.js');
 const router  = express.Router();
@@ -76,13 +78,9 @@ module.exports = (db, twilioClient) => {
         const quant = global.allCarts[global.currUserID].items[dishID].quant;
         orderDetailInsert(orderID, dishID, global.currUserID, quant);
       }
-      //Step 1: Send anything to the restaurant
-      newOrderSMS(twilioClient);
 
-
-      //Add items to the waiting orders object
-      //Send the correct information to the admin
-
+      //Construct a waiting order object
+      addWaitingOrderAndNotifyRestaurant(db, orderID, global.currUserID, global.allCarts[global.currUserID], twilioClient);
 
       res.redirect("/nav/menu");
     })

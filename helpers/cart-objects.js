@@ -17,28 +17,18 @@ class userCart {
   //Called from the MENU page
   //Either creates the dish in the list, or increments existing
   addDish(dish, amountAdded) {
-    if(!this.items[dish]) this.items[dish] = {quant: 0}; //Add to list if it's not there, set quantity to 0
-    this.items[dish].quant += amountAdded; //Add the quantity specified in either case
+    if(!this.items[dish]) this.items[dish] = {quant: 0};
+    this.items[dish].quant += amountAdded;
   }
-
-  // getTotalPrice() {
-  //   let totalPrice = 0;
-  //   for (let dish of Object.keys(this.items)) {
-  //     totalPrice += this.items[dish].price * this.items[dish].quant;
-  //   }
-  //   return totalPrice;
-  // }
 
   print(){
     let contents = "";
     for (let dish of Object.keys(this.items)) {
       contents += `Dish ID: ${dish}, Quantity: ${this.items[dish].quant}\n`
     }
-    // contents += `TOTAL PRICE: ${this.getTotalPrice()}\n`;
     console.log(contents);
     return contents;
   }
-
 }
 
 
@@ -51,7 +41,7 @@ const makeCart = (userID) => {
 }
 
 
-module.exports = makeCart;
+module.exports = {makeCart};
 
 
 

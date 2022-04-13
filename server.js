@@ -1,5 +1,5 @@
 //Helper imports
-const makeCart = require("./helpers/cart-objects");
+const {makeCart} = require("./helpers/cart-objects");
 
 // load .env data into process.env
 require("dotenv").config();
@@ -17,7 +17,7 @@ const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
 
-//Twilio authentication setup
+//Twilio setup
 const accountSid = process.env.TWILIO_ACCOUNT_SID; 
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const twilioClient = require('twilio')(accountSid, authToken);
@@ -46,17 +46,9 @@ app.use(express.static("public"));
 
 global.currUserID = 1; //<------------This is manually set to 1 (Alice in the database) for now
 global.allCarts = {} //Keys are userIDs (e.g. 1), values are userCart objects
-makeCart(global.currUserID) //<-------See ./helpers/cart-objects.js. This creates a new cart in the global.allCarts object if there wasn't one already for the current user
+makeCart(global.currUserID) //<-------See ./helpers/cart-objects.js. This creates a new cart in the global.allCarts object if there wasn't one already 
 
-//A TEST FOR HOW THE CART WORKS (remove later)
-
-// console.log("----Initial cart----")
-// global.allCarts[global.currUserID].print();
-
-// console.log("----Try adding something----")
-// global.allCarts[global.currUserID].addDish("Tuna sandich", 2);
-// global.allCarts[global.currUserID].addDish("Blueberry muffin", 3.00, 1);
-// global.allCarts[global.currUserID].print();
+global.allWaitingOrders = {}
 
 
 //--------------------------------------------
