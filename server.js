@@ -59,22 +59,12 @@ makeCart(global.currUserID) //<-------See ./helpers/cart-objects.js. This create
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users---givenexample");
-const widgetsRoutes = require("./routes/widgets---givenexample");
 
 //Our actual routes
 const navbarRoutes = require("./routes/nav");
 const menuRoutes = require("./routes/menu");
 const cartRoutes = require("./routes/cart");
-
-
-//-----THESE WERE EXAMPLES, DELETE LATER
-
-// Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
-// Note: mount other resources here, using the same pattern above
+const twilioRoutes = require("./routes/twilio");
 
 
 //-------OUR ACTUAL ROUTES
@@ -83,6 +73,7 @@ app.use("/nav", navbarRoutes(db)); //---> Separate files for all routes that are
 app.use("/api/menu", menuRoutes(db)); //---> API routes return JSONS with data from the database
 
 app.use("/cart", cartRoutes(db)); //---> For manipulating the cart objects in memory
+app.use("/twilio", twilioRoutes(db)); //---> for Twilio
 
 
 /*

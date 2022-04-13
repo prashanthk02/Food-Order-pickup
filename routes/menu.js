@@ -5,10 +5,6 @@ const router  = express.Router();
 
 module.exports = (db) => {
 
-  router.get("/", (req, res) => {
-    res.send("I can do this");
-  })
-
   //------Return a JSON of menu items from the category
   router.get("/:category", (req, res) => {
     const category = req.params.category;
