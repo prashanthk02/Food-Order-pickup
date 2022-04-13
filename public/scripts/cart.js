@@ -5,19 +5,17 @@ const createCartItem = function(item) {
   <div class="item-details">
   <img src="${item.image}" class="cart-image">
   <div class ="item-name-desc">
-  <h4>${item.name}</h4>
-  <span>${item.description}</span>
+  <span class="food-item-name">${item.name}</span>
+  <span class="menu-price"> $${item.price}.00</span>
   </div>
   </div>
   <div class="item-actions">
-    <span>$${item.price}</span>
   <form class="cart-update" action="/cart/change/${item.id}" method="POST">
-    <label>Quantity: </label>
     <input type="number" name="newQuant" min="1" max="9" value="${item.quant}">
-    <button type="submit">Update Quantity</button>
+    <button type="submit" class="update-button">Update Quantity</button>
   </form>
   <form class="remove-from-cart" action="/cart/remove/${item.id}" method="POST">
-    <button type="submit" class="remove-button">Remove from Cart</button>
+    <button type="submit" class="remove-button">Remove</button>
   </form>
   </div>
   </article>`);

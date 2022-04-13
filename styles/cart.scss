@@ -1,15 +1,26 @@
-main {
+@import 'variables';
+
+#outer-container > main {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-evenly;
+  height: 100vh;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 img.cart-image {
   height: auto;
   width: auto;
   max-width: 700px;
-  max-height: 100px;
+  max-height: 130px;
+  border-radius:4px;
+  display: none;
 }
 
 article {
@@ -18,42 +29,107 @@ article {
   padding: 1.5em;
 }
 
-.item-details {
-  display: flex;
-  flex-direction: row;
-}
-
 .item-actions {
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  padding-top: 0.5em;
+  padding-top: 1.5em;
+  gap: 5px;
 }
 
 .item-name-desc {
   display: flex;
   flex-direction: column;
   align-items: center;
+  // border: 1px solid black;
+  gap: 0px;
   min-width: 70%;
   margin-left: 1.5em;
+  margin-right: 1.5em;
 }
 
 form.submit-order {
   display: flex;
   flex-direction: column;
-  padding: 1em;
+  margin: 1em 2em 1em 2em;
 }
+
+
+.submit-button {
+  color: red;
+  @include submit-order-button();
+}
+
 
 form.cart-update {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+  gap: 5px;
+
+  input {
+    text-align: center;
+    max-width: 180px;
+  }
+
 
 }
+#cart-items > article {
+  border: 0.5px solid rgb(194, 187, 230);
+  margin-bottom: 8px;
+  border-radius:4px;
+}
+
+
+.update-button{
+  @include add-to-cart-button();
+  min-width: 180px;
+}
+
+.remove-button{
+  background-color: white;
+  border: none;
+  color:  rgb(209, 94, 94); // #5E5DF0;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+
+.food-item-name {
+  padding: 5px;
+  font-weight: bold;
+  color: #5E5DF0;
+  font-size: 24px;
+}
+
+.menu-price {
+  font-size: 20px;
+}
+
+.order-total-line {
+  text-align: center;
+  font-size: 20px;
+  padding-bottom: 0.5em;
+}
+
+
+
 
 @media only screen and (min-width: 1024px) {
-  main {
+  #outer-container > main {
     flex-wrap: nowrap;
+
+    section {
+      width: 70%;
+    }
+
+    footer {
+      width: 30%;
+      height: 50%;
+
+    }
   }
 
   article {
@@ -62,7 +138,7 @@ form.cart-update {
   }
 
   .item-actions {
-    flex-direction: column;
+    padding-top: 0;
   }
 
   .item-name-desc {
@@ -72,5 +148,9 @@ form.cart-update {
 
   form.cart-update {
     flex-direction: column;
+  }
+
+  img.cart-image {
+    display: block;
   }
 }
