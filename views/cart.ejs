@@ -16,31 +16,26 @@
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
   <script type="text/javascript" src="/scripts/cart.js"></script>
-
-  <style>
-    body {
-      display: flex;
-    }
-  </style>
-
 </head>
 
 <body>
   <%- include('partials/_nav') %>
 
-    <div id="outer-container"><main>
+    <div id="outer-container">
+      <main>
       <section id="cart-items">
         <!-- Content is inserted here -->
       </section>
-
-      <br><br>
-      <form class="submit-order" action="/cart/submitOrder" method="POST">
       <footer>
+        <form class="submit-order" action="/cart/submitOrder" method="POST">
         <span>Order Total: <span id="order-total"></span></span>
+        <div class="order-button">
         <button>Place the order</button>
+        </div>
       </footer>
       </form>
-    </main></div>
+    </main>
+  </div>
 
 </body>
 
