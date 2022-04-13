@@ -79,7 +79,7 @@ module.exports = (db, twilioClient) => {
         orderDetailInsert(orderID, dishID, global.currUserID, quant);
       }
 
-      //Construct a waiting order object
+      //Send to helper function for next steps
       addWaitingOrderAndNotifyRestaurant(db, orderID, global.currUserID, global.allCarts[global.currUserID], twilioClient);
 
       res.redirect("/nav/menu");

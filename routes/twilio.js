@@ -2,6 +2,9 @@
 //Twilio setup
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
+//Import function
+const {clientConfirmedSMS} = require('./../helpers/twilio');
+
 //Import private phones
 require('dotenv').config({path:__dirname+'/./../.env'});
 const restaurantPhone = process.env.RESTAURANT_PHONE; 
@@ -13,7 +16,7 @@ const router  = express.Router();
 
 
 
-module.exports = (db) => {
+module.exports = (db, twilioClient) => {
 
   //What happens when we receive a message
   router.post("/", (req, res) => {
@@ -50,18 +53,20 @@ module.exports = (db) => {
 
        //-----Handle successful input
 
-      //
+      //Update status of order in waiting orders
       global.allWaitingOrders[orderID].status = "pending";
 
+      //Update status of order in database
       db.query(`
       UPDATE orders
       SET order_status='preparing'
       WHERE id = ${orderID};`)
-      .then((() => {
+      .then(() => {
+        clientConfirmedSMS(orderID, orderMinutes, twilioClient);
         twiml.message('The time to prepare this order is set - thank you!');
         res.writeHead(200, {'Content-Type': 'text/xml'});
         return res.end(twiml.toString());
-      }))
+      })
 
     }
 

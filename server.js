@@ -69,7 +69,7 @@ app.use("/nav", navbarRoutes(db)); //---> Separate files for all routes that are
 app.use("/api/menu", menuRoutes(db)); //---> API routes return JSONS with data from the database
 
 app.use("/cart", cartRoutes(db, twilioClient)); //---> For manipulating the cart objects in memory
-app.use("/twilio", twilioRoutes(db)); //---> for Twilio
+app.use("/twilio", twilioRoutes(db, twilioClient)); //---> for Twilio
 
 
 /*

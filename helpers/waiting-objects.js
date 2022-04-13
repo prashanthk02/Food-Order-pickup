@@ -9,7 +9,7 @@ class waitingOrder {
 
   //SMS for client
   confirmedMessageStart(){
-    let messageText = `Hey ${this.clientName}! Your order`
+    let messageText = `Hey ${this.clientName}! Your order...\n`
     for (let dish of Object.keys(this.items)){
       messageText += `\n${this.items[dish].name} x ${this.items[dish].quant}`;
     }
@@ -80,6 +80,9 @@ const addWaitingOrderAndNotifyRestaurant = (db, orderID, userID, userCart, twili
     
       //Add the waitingOrder to the global list of waiting orders
       global.allWaitingOrders[orderID] = newWaitingOrder;
+
+      //Empty the user cart
+      global.allCarts[userID].items = {};
       
       //Call function to notify restaurant
       newOrderSMS(twilioClient, newWaitingOrder);
