@@ -9,7 +9,7 @@ const clientConfirmedSMS = (orderID, orderMinutes, twilioClient, db) => {
   const clientPhone = global.allWaitingOrders[orderID].clientPhone;
 
   let messageText = global.allWaitingOrders[orderID].confirmedMessageStart();
-  messageText += `\n\n...will be ready in ${orderMinutes} ${(orderMinutes === 1 ? "minute" : "minutes")}!`
+  messageText += `\n\n... will be ready in ${orderMinutes} ${(orderMinutes === 1 ? "minute" : "minutes")}!`
 
   twilioClient.messages
   .create({
