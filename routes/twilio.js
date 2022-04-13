@@ -3,15 +3,14 @@
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
 //Import function
-const {clientConfirmedSMS} = require('./../helpers/twilio');
+const { clientConfirmedSMS } = require('../helpers/twilio');
+const { clientReadySMS } = require('../helpers/twilio');
 
 //Import private phones
 require('dotenv').config({path:__dirname+'/./../.env'});
 const restaurantPhone = process.env.RESTAURANT_PHONE; 
 
 const express = require('express');
-const { AllTimeInstance } = require('twilio/lib/rest/api/v2010/account/usage/record/allTime');
-const {itemByCategory} =require('./db-queries/database.js');
 const router  = express.Router();
 
 
@@ -33,7 +32,7 @@ module.exports = (db, twilioClient) => {
       //-----Handle bad input
 
       const twiml = new MessagingResponse();
-      if (restoMessage.charAt(0) !=="#" || restoMessageParsed.length != 2 || !Number.isInteger(orderID) || !Number.isInteger(orderMinutes) || orderMinutes <= 0 || orderMinutes <= 0){
+      if (restoMessage.charAt(0) !=="#" || restoMessageParsed.length != 2 || !Number.isInteger(orderID) || orderMinutes <= 0 || orderMinutes <= 0){
         twiml.message('Invalid format - try again.');
         res.writeHead(200, {'Content-Type': 'text/xml'});
         return res.end(twiml.toString());
@@ -45,7 +44,7 @@ module.exports = (db, twilioClient) => {
         return res.end(twiml.toString());
       }
 
-      if(global.allWaitingOrders[orderID].status === "pending") {
+      if(global.allWaitingOrders[orderID].status === "preparing") {
         twiml.message('Invalid - you have already set the time for this order. Try again.');
         res.writeHead(200, {'Content-Type': 'text/xml'});
         return res.end(twiml.toString());
@@ -53,8 +52,8 @@ module.exports = (db, twilioClient) => {
 
        //-----Handle successful input
 
-      //Update status of order in waiting orders
-      global.allWaitingOrders[orderID].status = "pending";
+            //Update status of order in waiting orders
+      global.allWaitingOrders[orderID].status = "preparing";
 
       //Update status of order in database
       db.query(`
@@ -62,7 +61,26 @@ module.exports = (db, twilioClient) => {
       SET order_status='preparing'
       WHERE id = ${orderID};`)
       .then(() => {
-        clientConfirmedSMS(orderID, orderMinutes, twilioClient);
+
+        clientConfirmedSMS(orderID, orderMinutes, twilioClient, db);
+        
+        const msOrderDue = orderMinutes * 60 * 1000;
+
+        //---WHAT HAPPENS AFTER ORDER IS COMPLETED
+        setTimeout(() => {
+          db.query(`
+          UPDATE orders
+          SET order_status='completed'
+          WHERE id = ${orderID};`)
+          .then(() => {
+            clientReadySMS(orderID, twilioClient);
+            delete global.allWaitingOrders[orderID];
+          });
+        }, msOrderDue);
+        //---
+
+      })
+      .then(() => {
         twiml.message('The time to prepare this order is set - thank you!');
         res.writeHead(200, {'Content-Type': 'text/xml'});
         return res.end(twiml.toString());

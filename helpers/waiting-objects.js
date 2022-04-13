@@ -52,7 +52,7 @@ const addWaitingOrderAndNotifyRestaurant = (db, orderID, userID, userCart, twili
   //Create new waitingOrder
   const newWaitingOrder = new waitingOrder();
   newWaitingOrder.items = {}
-  newWaitingOrder.status = "waiting"; 
+  newWaitingOrder.status = "unconfirmed"; 
 
   //Find details about the client who made the order
   db.query(`SELECT * FROM users WHERE id = ${userID};`)
