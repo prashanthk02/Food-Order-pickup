@@ -18,7 +18,7 @@ const db = new Pool(dbParams);
 db.connect();
 
 //Twilio setup
-const accountSid = process.env.TWILIO_ACCOUNT_SID; 
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const twilioClient = require('twilio')(accountSid, authToken);
 
@@ -46,7 +46,7 @@ app.use(express.static("public"));
 
 global.currUserID = 1; //<------------This is manually set to 1 (Alice in the database) for now
 global.allCarts = {} //Keys are userIDs (e.g. 1), values are userCart objects
-makeCart(global.currUserID) //<-------See ./helpers/cart-objects.js. This creates a new cart in the global.allCarts object if there wasn't one already 
+makeCart(global.currUserID) //<-------See ./helpers/cart-objects.js. This creates a new cart in the global.allCarts object if there wasn't one already
 
 global.allWaitingOrders = {}
 

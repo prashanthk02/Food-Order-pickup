@@ -20,6 +20,9 @@
 .nav-title {
   font-family: 'Trebuchet MS', Tahoma, sans-serif;
   font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
     #lighthouse {
       color: white;
@@ -27,6 +30,13 @@
 
     #grill {
       color: $red-accent;
+    }
+
+    img {
+      display: none;
+      height: 80px;
+      padding: 5px;
+      border-radius: 50px;
     }
 }
 .right-side-nav-content {
@@ -67,6 +77,11 @@
 
   .nav-title {
     font-size: 21px;
+    margin-left: 40px;
+
+    img {
+      display: block;
+    }
   }
 
   // .right-side-nav-content {
@@ -87,6 +102,11 @@
 
   .nav-title {
     font-size: 21px;
+    margin-left: 40px;
+
+    img {
+      display: block;
+    }
   }
 
   // .right-side-nav-content {

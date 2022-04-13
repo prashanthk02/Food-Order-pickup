@@ -8,7 +8,7 @@ const { clientReadySMS } = require('../helpers/twilio');
 
 //Import private phones
 require('dotenv').config({path:__dirname+'/./../.env'});
-const restaurantPhone = process.env.RESTAURANT_PHONE; 
+const restaurantPhone = process.env.RESTAURANT_PHONE;
 
 const express = require('express');
 const router  = express.Router();
@@ -63,7 +63,7 @@ module.exports = (db, twilioClient) => {
       .then(() => {
 
         clientConfirmedSMS(orderID, orderMinutes, twilioClient, db);
-        
+
         const msOrderDue = orderMinutes * 60 * 1000;
 
         //---WHAT HAPPENS AFTER ORDER IS COMPLETED
