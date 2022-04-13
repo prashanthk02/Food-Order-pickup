@@ -28,9 +28,7 @@ const newOrderSMS = (twilioClient, newWaitingOrder) => {
     body: messageText,
     from: twilioPhone,
     to: restaurantPhone
-  })
-  .then(message => console.log(message.sid))
-  .catch((err) => console.log(err));
+  });
   
 }
 

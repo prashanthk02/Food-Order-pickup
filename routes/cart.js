@@ -30,7 +30,6 @@ module.exports = (db, twilioClient) => {
     db.query(queryString)
       .then(data => {
         const rawJSON = data.rows;
-        console.log(rawJSON);
         for (let elem of rawJSON){
           elem.quant = global.allCarts[global.currUserID].items[elem.id].quant;
         }
@@ -47,9 +46,7 @@ module.exports = (db, twilioClient) => {
 
   router.post("/remove/:item", (req, res) => {
     const item = req.params.item;
-    console.log(item);
     global.allCarts[global.currUserID].removeDish(item);
-    // res.end();
     res.redirect('/nav/cart');
   });
 
@@ -58,10 +55,7 @@ module.exports = (db, twilioClient) => {
     db.query(
     `INSERT INTO order_details (order_id, dish_id, user_id, quantity)
     VALUES (${order_id}, ${dish_id}, ${user_id}, ${quantity})`
-    )
-    .then(() => {
-      console.log("Success!");
-    })
+    );
   }
 
   //Clicking submit order should submit the order in cart to the database and trigger next steps
@@ -82,9 +76,9 @@ module.exports = (db, twilioClient) => {
       //Send to helper function for next steps
       addWaitingOrderAndNotifyRestaurant(db, orderID, global.currUserID, global.allCarts[global.currUserID], twilioClient);
 
-      res.redirect("/nav/menu");
+      res.redirect("/nav/cart");
     })
-    .catch(error => console.log(error.message));
+    
   });
 
 

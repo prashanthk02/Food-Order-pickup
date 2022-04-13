@@ -27,8 +27,6 @@ module.exports = (db) => {
         const orders_JSON= data.rows;
         const final_JSON = {};
 
-        console.log(orders_JSON);
-
         for (let order of orders_JSON) {
           if (final_JSON[order.order_id]) {
             final_JSON[order.order_id].totalPrice += order.price * order.quantity;
@@ -42,8 +40,6 @@ module.exports = (db) => {
             }
           }
         }
-
-        //console.log(final_JSON);
         const templateVars = {orderInfo: final_JSON}
         res.render("orders", templateVars);
         ;})

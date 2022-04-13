@@ -70,7 +70,7 @@ $(document).ready(function() {
 
 
 
-//-------------NOT WORKING
+//-------------THIS DOESN't WORK
 
 const addRemoveListener = function () {
 
@@ -81,7 +81,6 @@ const addRemoveListener = function () {
     const itemID = $(this).siblings("span.cart-item-id").text();
     $.ajax(`/cart/remove/${itemID}`, { method: 'POST' })
     .then(() => {
-      console.log("Success");
       $(this).closest("article").empty();
       displayTotalPrice();
     })
