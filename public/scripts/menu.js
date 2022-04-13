@@ -16,9 +16,9 @@ const createMenuItem = function(menuItem) {
   </div>
 
   <footer class="food-price">
-    <span>$${menuItem.price}</span>
+    <span>Price: $${menuItem.price}</span>
     <form action="/cart/add/${menuItem.id}/" METHOD="POST">
-      <input type="number" name="quant" min="1" max="9">
+      <input type="number" name="quant" min="1" max="9" value="1">
       </select>
       <button type="submit">Add to Cart</button>
     </form>
