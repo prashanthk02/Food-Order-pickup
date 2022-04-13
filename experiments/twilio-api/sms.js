@@ -1,7 +1,6 @@
 
 //These variables should be in .env
-const accountSid = "ACeadf543eb1764173a0fa8466747f885e";
-const authToken = "f7182d8de74854ec880f4d92013df045";
+
 const adminPhone = "+15145855582";
 
 const client = require('twilio')(accountSid, authToken);
