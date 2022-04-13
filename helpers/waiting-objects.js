@@ -23,8 +23,8 @@ class waitingOrder {
       messageText += `\n${this.items[dish].name} x ${this.items[dish].quant}`;
     }
     messageText += `
-    \nSpecify how long it will take to prepare this order. 
-    \nReply to this message in this exact format:\n#${this.id} - [minutes] 
+    \nSpecify how long it will take to prepare this order.
+    \nReply to this message in this exact format:\n#${this.id} - [minutes]
     `
     return messageText;
   }
@@ -52,7 +52,7 @@ const addWaitingOrderAndNotifyRestaurant = (db, orderID, userID, userCart, twili
   //Create new waitingOrder
   const newWaitingOrder = new waitingOrder();
   newWaitingOrder.items = {}
-  newWaitingOrder.status = "unconfirmed"; 
+  newWaitingOrder.status = "unconfirmed";
 
   //Find details about the client who made the order
   db.query(`SELECT * FROM users WHERE id = ${userID};`)
@@ -62,7 +62,7 @@ const addWaitingOrderAndNotifyRestaurant = (db, orderID, userID, userCart, twili
     newWaitingOrder.clientPhone = data.rows[0].phone_number;
   })
   .then(() => {
-    
+
     //Find details about the dishes in the order
     const listDishIDs =[];
     for (let id of Object.keys(global.allCarts[global.currUserID].items)){
@@ -71,19 +71,20 @@ const addWaitingOrderAndNotifyRestaurant = (db, orderID, userID, userCart, twili
     queryString = getDishDetails(listDishIDs);
     db.query(queryString).then(data => {
       const dishData = data.rows;
+      newWaitingOrder.totalPrice = 0;
       for (let dish of dishData) {
         newWaitingOrder.items[dish.id] = {};
         newWaitingOrder.items[dish.id].name = dish.name;
         newWaitingOrder.items[dish.id].quant = userCart.items[dish.id].quant;
-        newWaitingOrder.totalPrice = userCart.items[dish.id].quant * dish.price;
+        newWaitingOrder.totalPrice += userCart.items[dish.id].quant * dish.price;
       }
-    
+
       //Add the waitingOrder to the global list of waiting orders
       global.allWaitingOrders[orderID] = newWaitingOrder;
 
       //Empty the user cart
       global.allCarts[userID].items = {};
-      
+
       //Call function to notify restaurant
       newOrderSMS(twilioClient, newWaitingOrder);
     })

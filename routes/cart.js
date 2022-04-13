@@ -78,7 +78,7 @@ module.exports = (db, twilioClient) => {
 
       res.redirect("/nav/cart");
     })
-    
+
   });
 
 

@@ -1,7 +1,7 @@
 //Import private phones
 require('dotenv').config({path:__dirname+'/./../.env'});
-const restaurantPhone = process.env.RESTAURANT_PHONE; 
-const twilioPhone = process.env.TWILIO_API_PHONE; 
+const restaurantPhone = process.env.RESTAURANT_PHONE;
+const twilioPhone = process.env.TWILIO_API_PHONE;
 
 //--Send order confirmation and waiting time to client
 const clientConfirmedSMS = (orderID, orderMinutes, twilioClient, db) => {
@@ -29,7 +29,7 @@ const newOrderSMS = (twilioClient, newWaitingOrder) => {
     from: twilioPhone,
     to: restaurantPhone
   });
-  
+
 }
 
 //Send message to client when order is ready
