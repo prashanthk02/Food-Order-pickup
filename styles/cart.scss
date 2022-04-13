@@ -2,7 +2,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 img.cart-image {
@@ -42,4 +42,35 @@ form.submit-order {
   display: flex;
   flex-direction: column;
   padding: 1em;
+}
+
+form.cart-update {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+@media only screen and (min-width: 1024px) {
+  main {
+    flex-wrap: nowrap;
+  }
+
+  article {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .item-actions {
+    flex-direction: column;
+  }
+
+  .item-name-desc {
+    align-items: flex-start;
+    min-width: 0%;
+  }
+
+  form.cart-update {
+    flex-direction: column;
+  }
 }
