@@ -10,9 +10,10 @@ const createCartItem = function(item) {
   </div>
   </div>
   <div class="item-actions">
+    <span>$${item.price}</span>
   <form class="cart-update" action="/cart/change/${item.id}" method="POST">
     <label>Quantity: </label>
-    <input type="number" name="newQuant" min="1" max="9" value="${item.quant}"> * $${item.price}
+    <input type="number" name="newQuant" min="1" max="9" value="${item.quant}">
     <button type="submit">Update Quantity</button>
   </form>
   <form class="remove-from-cart" action="/cart/remove/${item.id}" method="POST">
