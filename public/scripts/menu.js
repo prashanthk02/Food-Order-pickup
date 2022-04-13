@@ -15,12 +15,11 @@ const createMenuItem = function(menuItem) {
     <span><img src=${menuItem.image} class="menu-image"></span>
   </div>
 
-  <footer class="food-price">
-    <span>Price: $${menuItem.price}</span>
-    <form action="/cart/add/${menuItem.id}/" METHOD="POST">
+  <footer class="menu-item-footer">
+    <span class="menu-price">Price: $${menuItem.price}.00</span>
+    <form class="menu-input" action="/cart/add/${menuItem.id}/" METHOD="POST">
       <input type="number" name="quant" min="1" max="9" value="1">
-      </select>
-      <button type="submit">Add to Cart</button>
+      <button type="submit" class="add-button">Add to Cart</button>
     </form>
   </footer>
 </article>`);

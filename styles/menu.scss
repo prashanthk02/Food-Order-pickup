@@ -1,3 +1,5 @@
+@import 'variables';
+
 img.menu-image {
   // height: 200px;
   // width: 280px;
@@ -8,25 +10,33 @@ img.menu-image {
 }
 
 .menu-types {
-  background-color: rgb(176, 160, 15);
+  // background-color: rgb(176, 160, 15);
   white-space: nowrap;
   overflow: scroll hidden;
+  display: flex;
+  justify-content: space-between;
+  gap: 3px;
 }
 .category-btn {
   height: 40px;
-  border: 2px solid rgb(176, 160, 15);
+  border: 1px solid rgb(194, 187, 230);
+  color: rgb(145, 139, 173);
+  background-color: white;
   border-radius: 8px;
-  width: 100px;
+  width: 15%;
+  min-width: 100px;
 }
 
 .category-btn:hover, .category-btn:focus {
   box-shadow: 0 0 8px rgb(255, 255, 255);
-  color: rgb(226, 141, 22);
+  color: white;
+  background-color: rgb(194, 187, 230) ;
 }
 .menu-box {
   margin: 20px;
   padding: 15px;
   width:380px;
+  border-radius: 10px;
   //display: flex;
   //flex-direction: row;
   //justify-content: flex-start;
@@ -44,6 +54,8 @@ img.menu-image {
 .food-item-name {
   padding: 5px;
   font-weight: bold;
+  color: #5E5DF0;
+  font-size: 24px;
 }
 
 .food-description {
@@ -51,10 +63,11 @@ img.menu-image {
   font-style: italic;
 }
 
-.food-price {
+.menu-item-footer {
   display: flex;
   justify-content: space-between;
   font-size: 16px;
+  align-items: center;
 }
 
 .menu-items {
@@ -64,6 +77,28 @@ img.menu-image {
   justify-content: center;
   flex-wrap: wrap;
 }
+
+
+.add-button {
+  @include add-to-cart-button();
+}
+
+
+form.menu-input{
+  display: flex;
+  gap: 5px;
+  input {
+    text-align: center;
+    width:60px;
+  }
+}
+
+.menu-price {
+  font-size: 20px;
+}
+
+
+
 
 @media only screen and (min-width: 768px) {
   // img.menu-image {
@@ -75,9 +110,6 @@ img.menu-image {
     margin: 5px;
   }
 
-  .food-item-name {
-    font-size: 24px;
-  }
 
 }
 
@@ -91,13 +123,11 @@ img.menu-image {
     margin: 5px;
   }
 
-  .food-item-name {
-    font-size: 24px;
-  }
+
 
   .menu-box:hover {
-    border: 1px solid rgb(15, 15, 14);
-    box-shadow: 6px 6px 3px gray;
+    border: 1px solid rgb(194, 187, 230);
+    box-shadow: 6px 6px 3px rgb(94, 93, 149);
 
   }
 
