@@ -2,21 +2,24 @@ const createCartItem = function(item) {
 
   const $cartItem = $(`
   <article>
+  <div class="item-details">
+  <img src="${item.image}" class="cart-image">
+  <div class ="item-name-desc">
   <h4>${item.name}</h4>
-  <div>
-    <img src="${item.image}" class="cart-image">
-    <form class="cart-update" action="/cart/change/${item.id}" method="POST">
-      <label>Quantity: </label>
-      <input type="number" name="newQuant" min="1" max="9" value="${item.quant}"> * $${item.price}
-      <button type="submit">Update Quantity</button>
-    </form>
-  </div>
   <span>${item.description}</span>
+  </div>
+  </div>
+  <div class="item-actions">
+  <form class="cart-update" action="/cart/change/${item.id}" method="POST">
+    <label>Quantity: </label>
+    <input type="number" name="newQuant" min="1" max="9" value="${item.quant}"> * $${item.price}
+    <button type="submit">Update Quantity</button>
+  </form>
   <form class="remove-from-cart" action="/cart/remove/${item.id}" method="POST">
     <button type="submit" class="remove-button">Remove from Cart</button>
   </form>
-
-</article>`);
+  </div>
+  </article>`);
 return $cartItem;
 }
 
