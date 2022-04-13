@@ -34,11 +34,11 @@ div.order-header{
     background-color: green;
   }
 
-  div.order-status.awaiting{
+  div.order-status.unconfirmed{
     background-color: rgb(203, 160, 30);
   }
 
-  div.order-status.confirmed{
+  div.order-status.preparing{
     background-color: blue;
   }
 }

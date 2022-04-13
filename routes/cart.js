@@ -68,7 +68,7 @@ module.exports = (db, twilioClient) => {
   router.post("/submitOrder", (req, res) => {
     db.query(`
     INSERT INTO orders (order_time, order_status, user_id)
-    VALUES (now(),'Awaiting Confirmation', ${global.currUserID})
+    VALUES (now(),'unconfirmed', ${global.currUserID})
     RETURNING id`)
     .then(data => {
       const orderID = data.rows[0].id;

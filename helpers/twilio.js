@@ -2,7 +2,6 @@
 require('dotenv').config({path:__dirname+'/./../.env'});
 const restaurantPhone = process.env.RESTAURANT_PHONE; 
 const twilioPhone = process.env.TWILIO_API_PHONE; 
-const clientPhone = '5145855582'
 
 
 const smsClientConfirmed = (twilioClient) => {
