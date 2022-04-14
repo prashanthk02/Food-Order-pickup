@@ -18,8 +18,8 @@ const createMenuItem = function(menuItem) {
   <footer class="menu-item-footer">
     <span class="menu-price">Price: $${menuItem.price}.00</span>
     <form class="menu-input" action="/cart/add/${menuItem.id}/" METHOD="POST">
-      <input type="number" name="quant" min="1" max="9" value="1">
-      <button type="submit" class="add-button">Add to Cart</button>
+      <input class="quant-form" type="number" name="quant" min="1" max="9" value="1">
+      <button type="submit" class="add-button">Add to Cart<span style="display: none">${menuItem.id}</span></button>
     </form>
   </footer>
 </article>`);
@@ -28,13 +28,42 @@ return $menuItem;
 
 
 const renderCategory = function (category) {
-
   //Make a call to theAPI
   $.ajax(`/api/menu/${category}`, { method: 'GET' })
   .then((menuItems) => {
       for (let item of menuItems){
-        $('.menu-items').append(createMenuItem(item));
+        $('.menu-items').append(createMenuItem(item))
       }
+  })
+  .then(() => {
+    $(".add-button").click(function (event) {
+      event.preventDefault();
+
+      setTimeout( () => {
+        $('#cart-button').css('color', 'white')
+      }, 100);
+      setTimeout( () => {
+        $('#cart-button').css('color', '#5e5d95')
+      }, 400);
+      setTimeout( () => {
+        $('#cart-button').css('color', 'white')
+      }, 700);
+      setTimeout( () => {
+        $('#cart-button').css('color', '#5e5d95')
+      }, 1000);
+      setTimeout( () => {
+        $('#cart-button').css('color', 'white')
+      }, 1300);
+      setTimeout( () => {
+        $('#cart-button').css('color', '#5e5d95')
+      }, 1600);
+
+      const id = $(this).find("span").text();
+      const inputQuant = Number($(this).siblings().val());
+      $.ajax(`/cart/add/${id}/${inputQuant}`, { method: 'POST'})
+
+    });
+
   });
 
 }
