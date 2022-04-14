@@ -14,6 +14,7 @@
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/orders.js"></script>
 
   <!-- External fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,10 +35,10 @@
 
     <main>
 
-        <% for (let key of Object.keys(orderInfo)) {%>
+        <!-- <% for (let key of Object.keys(orderInfo)) {%>
           <article class="order">
             <div class="order-header">
-              <div class="order-num">#<%= key %></div>
+              <div class="order-num">Order ID: <%= key %></div>
               <div class="order-status <%= orderInfo[key].status %>"><%= orderInfo[key].status %></div>
             </div>
             <div class="order-body">
@@ -49,12 +50,12 @@
                   <li><%= dish.name %> x <%= dish.quantity %></li>
                 <% } %>
               </ul>
-              <div class="order-total">$<%= orderInfo[key].totalPrice %>.00</div>
+              <div class="order-total">Total: $<%= orderInfo[key].totalPrice %>.00</div>
             </div>
           </article>
-        <% } %>
+        <% } %> -->
 
-      </section>
+     
     </main>
 
   </div>

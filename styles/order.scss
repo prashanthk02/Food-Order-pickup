@@ -1,13 +1,17 @@
+@import 'variables';
 
-section#all-orders {
+#outer-container > main {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  gap: 20px;
+  gap: 8px;
+
 }
 
 article.order {
-  border: 1px solid blue;
+  // border: 1px solid blue;
+  border: 0.5px solid $lighter-purple;
+  margin-bottom: 8px;
+  border-radius: 4px;
 }
 
 div.order-header{
@@ -31,15 +35,15 @@ div.order-header{
   }
 
   div.order-status.completed{
-    background-color: green;
+    background-color: $bright-purple;
   }
 
   div.order-status.unconfirmed{
-    background-color: rgb(203, 160, 30);
+    background-color: $lightest-purple;
   }
 
   div.order-status.preparing{
-    background-color: blue;
+    background-color: $lighter-purple;
   }
 }
 
@@ -47,9 +51,10 @@ div.order-body{
   padding: 10px;
 
   div.order-date{
-    color: rgb(92, 92, 92);
+    color: $medium-purple;
+    font-size: 18px;
     padding-bottom: 10px;
-    font: italic;
+    font-style: italic;
   }
 
   ul {
