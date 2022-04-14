@@ -3,10 +3,16 @@ body {
   font-family: "Nunito", sans-serif;
   // font-family: 'Silka webfont';
   background-color: $darkest-blue;
-  cursor: url(http://www.rw-designer.com/cursor-extern.php?id=1034);
+  @include lobster-curstor();
+
   // margin: auto;
   height: 100vh;
 }
+
+*:hover {
+  @include lobster-curstor();
+}
+
 
 #outer-container {
   display: flex;

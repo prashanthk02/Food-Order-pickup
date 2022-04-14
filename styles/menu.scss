@@ -28,6 +28,7 @@ img.menu-image {
 }
 
 .category-btn:hover, .category-btn:focus {
+  @include lobster-curstor();
   box-shadow: 0 0 8px rgb(255, 255, 255);
   color: white;
   background-color: rgb(194, 187, 230) ;
