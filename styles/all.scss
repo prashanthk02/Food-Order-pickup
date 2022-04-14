@@ -5,6 +5,7 @@ body {
   background-color: $darkest-blue;
   @include lobster-curstor();
   height: 100vh;
+  min-width:500px;
 }
 
 #outer-container {
