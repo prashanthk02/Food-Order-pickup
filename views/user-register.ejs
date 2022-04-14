@@ -27,7 +27,11 @@
 <body>
 
   <!--Imported nav bar-->
-  <%- include('partials/_nav') %>
+  <% if (logged===1) { %>
+    <%- include('partials/_nav_user') %>
+  <% } else { %>
+    <%- include('partials/_nav_guest') %>
+  <% } %>
   <!--Pager header with menu type (starters, mains, etc.)-->
 
   <div id="outer-container">

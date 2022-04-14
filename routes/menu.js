@@ -8,7 +8,7 @@ module.exports = (db) => {
   //------Return a JSON of menu items from the category
   router.get("/:category", (req, res) => {
     const category = req.params.category;
-    const queryString = itemByCategory(category);
+    const queryString = itemByCategory(category, req);
     const queryValues = [category];
     db.query(queryString, queryValues)
       .then(data => {

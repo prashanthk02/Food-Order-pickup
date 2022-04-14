@@ -25,7 +25,12 @@
 </head>
 
 <body>
-  <%- include('partials/_nav') %>
+
+  <% if (logged===1) { %>
+    <%- include('partials/_nav_user') %>
+  <% } else { %>
+    <%- include('partials/_nav_guest') %>
+  <% } %>
 
     <div id="outer-container">
       <main>

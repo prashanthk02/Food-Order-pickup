@@ -27,7 +27,11 @@
 <body>
 
   <!--Imported nav bar-->
-  <%- include('partials/_nav') %>
+  <% if (logged===1) { %>
+    <%- include('partials/_nav_user') %>
+  <% } else { %>
+    <%- include('partials/_nav_guest') %>
+  <% } %>
   <!--Pager header with menu type (starters, mains, etc.)-->
 
   <div id="outer-container">
@@ -36,7 +40,7 @@
 
       <h1>Login</h1>
 
-      <form action="multiUser/login" method="POST">
+      <form action="/multiUser/login" method="POST">
   
         <label>Name: </label>         
         <input type="text" name="user_name" size="15" placeholder="name"> <br> <br>  

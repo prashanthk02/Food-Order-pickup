@@ -1,20 +1,38 @@
 
 const express = require('express');
-const {ordersByCustomer} =require('./db-queries/database.js');
+const {ordersByCustomer} = require('./db-queries/database.js');
 const router  = express.Router();
 
 
 module.exports = (db) => {
 
   router.get("/menu", (req, res) => {
-   res.render("menu");
+    let loggedValue = 1;
+    if (!req.session.user_id) {
+      loggedValue = 0;
+    }
+    console.log(`REQ SESSION IS: ${req.session}`);
+    console.log(`REQ SESSION ID IS: ${req.session.user_id}`);
+    console.log(`LOGGED VALUE GOING IN IS: ${loggedValue}`);
+    res.render("menu", {logged: loggedValue});
   });
+
+
 
   router.get("/cart", (req, res) => {
-   res.render("cart");
+    if (!req.session.user_id) {
+      return res.redirect("/nav/menu");
+    }
+    return res.render("cart", {logged: 1});
   });
 
+
+
   router.get("/orders", (req, res) => {
+
+    if (!req.session.user_id) {
+      return res.redirect("/nav/menu");
+    }
 
     const userID = global.currUserID;
     const category = req.params.category;
@@ -40,17 +58,11 @@ module.exports = (db) => {
             }
           }
         }
-        const templateVars = {orderInfo: final_JSON}
+        const templateVars = {orderInfo: final_JSON, logged: 1}
         res.render("orders", templateVars);
         ;})
 
   });
-
-
-
-  //  res.render("orders");
-  // });
-
 
   return router;
 };

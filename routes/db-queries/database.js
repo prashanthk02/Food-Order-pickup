@@ -5,11 +5,13 @@ const { ModelBuildPage } = require("twilio/lib/rest/autopilot/v1/assistant/model
 
 
 //Get item by category
-const itemByCategory = ((category) => {
+const itemByCategory = ((category, req) => {
   let queryString = `
 SELECT id, name, description, price, image
 FROM dishes
 WHERE category = $1;`
+
+console.log("THE ID FROM HELPER IS: " + req.session.user_id);
 
 return queryString;
 
