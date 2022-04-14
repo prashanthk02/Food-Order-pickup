@@ -9,9 +9,15 @@ const router  = express.Router();
 
 module.exports = (db, twilioClient) => {
 
-  router.post("/add/:item/", (req, res) => {
+  router.post("/add/:item/:quant", (req, res) => {
+
+    if(!req.session.user_id){
+      return res.redirect("multiUser/login");
+    }
+
     const itemID = req.params.item;
-    const quant = Number(req.body.quant);
+    const quant = Number(req.params.quant);
+    //const quant = Number(req.body.quant);
     global.allCarts[req.session.user_id].addDish(itemID, quant);
     res.redirect('/nav/menu');
   });

@@ -12,22 +12,24 @@ body {
   justify-content: center;
   // width: 70%;
   margin-top:150px;
+  height: 100%;
 }
 
 #outer-container > main {
   background: white;
   width: 100%; /*Should be less in desktop view*/
   padding: 15px;
-  height: 1rem;
+  height: 100%;
 }
 
 
 @media only screen and (min-width: 768px) {
   #outer-container {
     width: auto;
-    margin: 100px 25px 15px 25px;
+    margin: 100px 25px 0px 25px;
     main {
       width: 90%;
+      // height: 100%;
     }
   }
 }
@@ -35,10 +37,11 @@ body {
 
 @media only screen and (min-width: 1024px) {
   #outer-container {
-    width: auto%;
-    margin: 100px 25px 15px 25px;
+    width: auto;
+    margin: 100px 25px 0px 25px;
     main {
       width: 80%;
+      // height: 100%;
       // width: 900px;
     }
   }
