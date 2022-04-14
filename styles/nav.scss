@@ -8,7 +8,6 @@
   background-position: 95%;
   position: fixed;
   top: 0;
-  color: rgb(0, 0, 0);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -34,7 +33,7 @@
 
     img {
       display: none;
-      height: 100px;
+      height: 90px;
       padding: 5px;
       border-radius: 50px;
     }
@@ -46,31 +45,23 @@
   align-items: center;
   gap: 20px;
   margin-top: -20px;
-  //width: 300px;
+
   button {
     font-size: 30px;
-    color: rgb(111, 100, 100);
+    color: $medium-purple;
     background-color: transparent;
     border: none;
     &:hover {
-      color: rgb(255, 255, 255);
+      color: $lighter-purple;
 
     }
   }
 }
 
-
-// .right-side-nav-content button:hover {
-//   color: rgb(176, 160, 15);
-// }
-
-// body, html {
-//   margin-top: 60px;
-// }
-
-
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1024px) {
   #nav-bar {
+    padding-left: 8%;
+    padding-right: 12%;
     width: 100%;
     height: 100px;
     flex-direction: row;
@@ -85,36 +76,7 @@
     }
   }
 
-  // .right-side-nav-content {
-  //   gap: 5px;
-  // }
-
-  // .right-side-nav-content button {
-  //   font-size: 20px;
-  // }
-}
-
-
-@media only screen and (min-width: 1024px) {
-  #nav-bar {
-    width: 100%;
-    height: 100px;
+  .right-side-nav-content {
+    margin-top: 0px;
   }
-
-  .nav-title {
-    font-size: 21px;
-    margin-left: 30px;
-
-    img {
-      display: block;
-    }
-  }
-
-  // .right-side-nav-content {
-  //   gap: 5px;
-  // }
-
-  // .right-side-nav-content button {
-  //   font-size: 20px;
-  // }
 }

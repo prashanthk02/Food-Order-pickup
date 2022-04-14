@@ -1,8 +1,6 @@
 @import 'variables';
 
 img.menu-image {
-  // height: 200px;
-  // width: 280px;
   width: 100%;
   border-radius: 5px;
   display: block;
@@ -10,7 +8,6 @@ img.menu-image {
 }
 
 .menu-types {
-  // background-color: rgb(176, 160, 15);
   white-space: nowrap;
   overflow: scroll hidden;
   display: flex;
@@ -19,8 +16,8 @@ img.menu-image {
 }
 .category-btn {
   height: 40px;
-  border: 1px solid rgb(194, 187, 230);
-  color: rgb(145, 139, 173);
+  border: 1px solid $lightest-purple;
+  color: $lighter-purple;
   background-color: white;
   border-radius: 8px;
   width: 15%;
@@ -31,31 +28,21 @@ img.menu-image {
   @include lobster-curstor();
   box-shadow: 0 0 8px rgb(255, 255, 255);
   color: white;
-  background-color: rgb(194, 187, 230) ;
+  background-color: $lightest-purple ;
 }
 .menu-box {
   margin: 20px;
   padding: 15px;
   width:380px;
   border-radius: 10px;
-  //display: flex;
-  //flex-direction: row;
-  //justify-content: flex-start;
 }
 
-// .menu-items {
-//   background-color: red;
-//   display: grid;
-//   grid-template-rows: center;
-//   gap: 20px;
-//   width: 100%;
-//   // grid-template-columns: repeat(1, 1fr);
-// }
+
 
 .food-item-name {
   padding: 5px;
   font-weight: bold;
-  color: #5E5DF0;
+  color: $bright-purple;
   font-size: 24px;
 }
 
@@ -82,6 +69,9 @@ img.menu-image {
 
 .add-button {
   @include add-to-cart-button();
+  &:hover {
+    background: $red-accent;
+  }
 }
 
 
@@ -102,24 +92,12 @@ form.menu-input{
 
 
 @media only screen and (min-width: 768px) {
-  // img.menu-image {
-  //   height: 300px;
-  //   width: 420px;
-  // }
-
   .category-btn {
     margin: 5px;
   }
-
-
 }
 
 @media only screen and (min-width: 1024px) {
-  // img.menu-image {
-  //   height: 300px;
-  //   width: 420px;
-  // }
-
   .category-btn {
     margin: 5px;
   }
@@ -127,14 +105,8 @@ form.menu-input{
 
 
   .menu-box:hover {
-    border: 1px solid rgb(194, 187, 230);
-    box-shadow: 6px 6px 3px rgb(94, 93, 149);
+    border: 1px solid $lightest-purple;
+    box-shadow: 6px 6px 3px $medium-purple;
 
   }
-
-  // .menu-items {
-  //   display: grid;
-  //   grid-template-rows: auto;
-  //   grid-template-columns: repeat(2, auto);
-  // }
 }

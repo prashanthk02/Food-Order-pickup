@@ -56,7 +56,6 @@ form.submit-order {
 
 
 .submit-button {
-  color: red;
   @include submit-order-button();
 }
 
@@ -75,7 +74,7 @@ form.cart-update {
 
 }
 #cart-items > article {
-  border: 0.5px solid rgb(194, 187, 230);
+  border: 0.5px solid $lightest-purple;
   margin-bottom: 8px;
   border-radius:4px;
 }
@@ -83,13 +82,16 @@ form.cart-update {
 
 .update-button{
   @include add-to-cart-button();
+  &:hover{
+    background: $navbar-blue;
+  }
   min-width: 180px;
 }
 
 .remove-button{
   background-color: white;
   border: none;
-  color:  rgb(209, 94, 94); // #5E5DF0;
+  color:  $muted-red; // #5E5DF0;
   &:hover {
     text-decoration: underline;
   }
@@ -99,7 +101,7 @@ form.cart-update {
 .food-item-name {
   padding: 5px;
   font-weight: bold;
-  color: #5E5DF0;
+  color: $bright-purple;
   font-size: 24px;
 }
 

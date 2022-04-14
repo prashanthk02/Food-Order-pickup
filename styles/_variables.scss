@@ -1,9 +1,15 @@
 $darkest-blue: #120637;
 $navbar-blue:#251A66;
 $red-accent: #D61A1A;
+$brighter-red: #FF4742;
+$muted-red: rgb(209, 94, 94);
+$lightest-purple: rgb(194, 187, 230);
+$lighter-purple: rgb(145, 139, 173);
+$medium-purple:  rgb(94, 93, 149);
+$bright-purple: #5E5DF0;
 
 @mixin add-to-cart-button {
-  background: #5E5DF0;
+  background: $bright-purple;
   border-radius: 999px;
   // box-shadow: #5E5DF0 0 10px 20px -10px;
   box-sizing: border-box;
@@ -23,14 +29,14 @@ $red-accent: #D61A1A;
   word-break: break-word;
   border: 0;
   &:hover {
-    background: red;
+    background: $red-accent;
   }
 
 }
 
 @mixin submit-order-button {
-    background: #FF4742;
-    border: 1px solid #FF4742;
+    background: $brighter-red;
+    border: 1px solid $brighter-red;
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
     box-sizing: border-box;
@@ -57,7 +63,7 @@ $red-accent: #D61A1A;
     &:hover,:active {
       background-color: initial;
       background-position: 0 0;
-      color: #FF4742;
+      color: $brighter-red;
     }
     &:active {
       opacity: .5;
