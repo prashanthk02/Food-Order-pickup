@@ -8,7 +8,7 @@ module.exports = (db) => {
 
   router.get("/", (req, res) => {
 
-    const userID = global.currUserID;
+    const userID = req.session.user_id;
     const category = req.params.category;
     const queryString = ordersByCustomer();
     const queryValues = [userID];

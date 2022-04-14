@@ -49,6 +49,8 @@ const {getDishDetails} = require('./../routes/db-queries/database.js');
 //When this is done, it calls a function to notify restaurant about the new order
 const addWaitingOrderAndNotifyRestaurant = (db, orderID, userID, userCart, twilioClient) => {
 
+  console.log("GETS INSIDE\n");
+
   //Create new waitingOrder
   const newWaitingOrder = new waitingOrder();
   newWaitingOrder.items = {}
@@ -65,7 +67,7 @@ const addWaitingOrderAndNotifyRestaurant = (db, orderID, userID, userCart, twili
 
     //Find details about the dishes in the order
     const listDishIDs =[];
-    for (let id of Object.keys(global.allCarts[global.currUserID].items)){
+    for (let id of Object.keys(global.allCarts[userID].items)){
       listDishIDs.push(id);
     }
     queryString = getDishDetails(listDishIDs);

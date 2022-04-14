@@ -34,7 +34,7 @@ module.exports = (db) => {
       return res.redirect("/nav/menu");
     }
 
-    const userID = global.currUserID;
+    const userID = req.session.user_id;
     const category = req.params.category;
     const queryString = ordersByCustomer();
     const queryValues = [userID];
