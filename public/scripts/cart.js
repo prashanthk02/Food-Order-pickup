@@ -12,7 +12,7 @@ const createCartItem = function(item) {
   <div class="item-actions">
   <form class="cart-update" action="/cart/change/${item.id}" method="POST">
     <input type="number" name="newQuant" min="1" max="9" value="${item.quant}">
-    <button type="submit" class="update-button">Update Quantity</button>
+    <button type="submit" class="update-button">Update quantity</button>
   </form>
   <form class="remove-from-cart" action="/cart/remove/${item.id}" method="POST">
     <button type="submit" class="remove-button">Remove</button>

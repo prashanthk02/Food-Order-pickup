@@ -70,6 +70,7 @@ const menuRoutes = require("./routes/menu");
 const cartRoutes = require("./routes/cart");
 const twilioRoutes = require("./routes/twilio");
 const multiUserRoutes = require("./routes/multiUser");
+const ordersRoutes = require("./routes/orders");
 
 
 //-------OUR ACTUAL ROUTES
@@ -80,6 +81,7 @@ app.use("/api/menu", menuRoutes(db)); //---> API routes return JSONS with data f
 app.use("/cart", cartRoutes(db, twilioClient)); //---> For manipulating the cart objects in memory
 app.use("/twilio", twilioRoutes(db, twilioClient)); //---> for Twilio
 app.use("/multiUser", multiUserRoutes(db)); //---> for Twilio
+app.use("/api/orders", ordersRoutes(db, twilioClient)); //---> to display the past orders
 
 
 /*
