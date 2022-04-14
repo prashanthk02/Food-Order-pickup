@@ -4,15 +4,8 @@ body {
   // font-family: 'Silka webfont';
   background-color: $darkest-blue;
   @include lobster-curstor();
-
-  // margin: auto;
   height: 100vh;
 }
-
-*:hover {
-  @include lobster-curstor();
-}
-
 
 #outer-container {
   display: flex;
@@ -25,6 +18,7 @@ body {
   background: white;
   width: 100%; /*Should be less in desktop view*/
   padding: 15px;
+  height: 1rem;
 }
 
 
