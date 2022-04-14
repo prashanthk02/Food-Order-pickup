@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/all.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/login.css" type="text/css" />
 
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -38,23 +39,31 @@
 
     <main>
 
-      <h1>Registration</h1>
+      <div class="login-box">
+        <h1>Registration</h1>
 
       <form action="/multiUser/register" method="POST">
-  
-        <label>Name: </label>         
-        <input type="text" name="user_name" size="15" placeholder="name"> <br> <br>  
 
-          
-        <label>Phone (10 digits): </label>   
-        <input type="text" name="user_phone" size="10"  placeholder="phone"> <br> <br>  
+        <div class="name">
+          <label>Name: </label>
+          <input type="text" name="user_name" size="15" placeholder="name">
+        </div>
 
-        <label>Password: </label>     
-        <input type="text" name="user_password" placeholder="password"> <br>   
-        <br> <br>  
+        <div class="phone">
+          <label>Phone (10 digits): </label>
+          <input type="number" name="user_phone" size="10"  placeholder="phone">
+        </div>
 
-        <button type="submit">Register</button>
+        <div class="password">
+          <label>Password: </label>
+          <input type="password" name="user_password" placeholder="password">
+        </div>
+
+        <button class="login-btn" type="submit">Register</button>
         </form>
+      </div>
+
+
 
     </main>
 

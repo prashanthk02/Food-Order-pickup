@@ -1,3 +1,53 @@
-main > h1 {
-  color: aqua;
+@import 'variables';
+
+.login-box {
+  border: 1px solid black;
+  border-radius: 8px;
+  margin-top: 40PX;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(60, 140, 186);
+  padding: 15px;
+  font-size: 18px;
+
+  .login-btn {
+      @include add-to-cart-button();
+      &:hover {
+        background: $red-accent;
+      }
+  }
+
+  label {
+    font-weight: 700;
+  }
+
+  input {
+    width: 250px;
+    height: 35px;
+    border-radius: 4px;
+    border: none;
+  }
+
+}
+
+.name {
+  padding: 5px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 100px;
+}
+
+.password {
+  padding: 5px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 68px;
+}
+
+.phone {
+  padding: 5px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
 }
