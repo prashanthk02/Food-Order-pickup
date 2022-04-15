@@ -18,7 +18,7 @@ For inspiration check out how Ritual works, but keep in mind that's implemented 
 
 
 1. WHAT WE CHOSE
-We chose the food pick-up ordering app. Each group member picked 4-5 projects that stuck out and looked interesting, we found the overlap between our choices and narrowed it down to 2. Then we picked food ordering app because it seemed to be the more exciting of the two. Wanted to see how an external api would integrate. A restaurant page also seemed like a project that ou would often encounter in the "working world". 
+Then we picked food ordering app because it seemed to be the more exciting of the two. Wanted to see how an external api would integrate. A restaurant page also seemed like a project that ou would often encounter in the "working world". 
 
 2. DEMO
 SETUP 

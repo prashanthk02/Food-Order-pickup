@@ -1,29 +1,31 @@
-## Links to other notes
+## Lighthouse Grill
 
-* [API](./experiments/twilio-api/README.md)
-* [Memory storage](./experiments/memory-storage/README.md) - objects in memory, not database
+Lighthouse Grill is a web app created by Daria Kiseleva, Prashanth Kommidi, and Ryan Kidd as the midterm project for the Lighthouse Labs full time web development bootcamp. 
 
-## Technology  Overview
+## Features
 
-### EJS
-* The navbar is a header partial
-* Clicking on Menu - displays the appetizer section of the menu
-* Clicking on Orders - displays orders with the most recent on top and status of "Completed", "Preparing", or "Waiting for approval" (or whatever they are called)
-* Clicking on Cart gives the basic outline of the page
+Lighthouse Grill is a food ordering app for a restaurant which uses EJS, jQuery, HTML5, SCSS, Postgresql and an external messaging API (Twilio).
 
-### jQuery
-* Menu page: 
-  * Clicking links 'appetizer', 'main', 'dessert' etc changes what is displayed on the page. Appetizers is the default section (how to coordinate this???). 
-  * Source of data: the database dishes table.
-  * Clicking 'add to cart' initializes or updates the cart object of the user
-* Cart page:
-  * Data source: the cart object in memory
-  * Adjusting amount, or deleting item from cart updates the cart object of the user
-  * Removing an item from cart removes it from the page
-    * This should be a call to re-show all the items based on the data in cart, not hide the div
-  * The total $ beside the "Send order" button is updated dynamically any time user changes amount or deletes an item
-  * When the cart is empty, either redirect back to the menu, or make the the button to submit order not clickable and display a message that the cart is empty
-* Order page
-  * Is it possible to dynamically change the status of the object?
+1. Responsive web design built for mobile devices and larger screens.
+2. Register and Login to create unique users. 
+3. Add menu items to your cart, update quantity, remove items completely, and place your order. 
+4. Twilio API integration to send notifications to the user and the restaurant regarding their order.  
 
-## Routes summary
+## Screenshots 
+!["Desktop interface"]()
+
+!["Desktop interface"]()
+
+!["Desktop interface"]()
+
+## Dependencies
+
+- Express 
+- Chalk
+- Cookie-session
+- Dotenv
+- EJS
+- Morgan
+- Postgresql
+- Sass
+- Twilio
