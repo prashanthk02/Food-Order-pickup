@@ -18,8 +18,6 @@ Lighthouse Grill is a food ordering app for a restaurant which uses EJS, jQuery,
 
 !["Lighthouse Grill Order Page"](https://github.com/dariakiseleva/midterm-project/blob/master/docs/lhg-orders-page.png?raw=true)
 
-!["Lighthouse Grill App"](https://github.com/dariakiseleva/midterm-project/blob/master/docs/grill.mov)
-
 ## Dependencies
 
 - Express 
