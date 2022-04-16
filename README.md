@@ -11,12 +11,14 @@ Lighthouse Grill is a food ordering app for a restaurant which uses EJS, jQuery,
 3. Add menu items to your cart, update quantity, remove items completely, and place your order. 
 4. Twilio API integration to send notifications to the user and the restaurant regarding their order.  
 
-## Screenshots 
+## Screenshots
 !["Lighthouse Grill Menu  Page"](https://github.com/dariakiseleva/midterm-project/blob/master/docs/lhg-menupage.png?raw=true)
 
 !["Lighthouse Grill Cart"](https://github.com/dariakiseleva/midterm-project/blob/master/docs/lhg-cart.png?raw=true)
 
 !["Lighthouse Grill Order Page"](https://github.com/dariakiseleva/midterm-project/blob/master/docs/lhg-orders-page.png?raw=true)
+
+!["Lighthouse Grill App"](https://github.com/dariakiseleva/midterm-project/blob/master/docs/grill.mov)
 
 ## Dependencies
 
